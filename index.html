@@ -8,7 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome 6 (free) -->
+    <!-- Font Awesome 6 (free) -- СТАБИЛЬНАЯ ССЫЛКА -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0-beta3/css/all.css">
+    <!-- резервный CDN на всякий случай -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
@@ -23,7 +25,7 @@
             --sand: #F3E9DE;
             --dusty-rose: #E8CFC8;
             --mint: #C8E0D6;
-            --slate: #2F4858;            /* глубокий сине-серый — деловой, но мягкий */
+            --slate: #2F4858;            /* глубокий сине-серый */
             --gold: #D8A48F;
             --shadow: 0 25px 40px -14px rgba(47,72,88,0.12);
             --border-radius-card: 40px;
@@ -111,15 +113,12 @@
             justify-content: space-between;
             align-items: center;
         }
-        .logo {
-            /* фон убран, логотип на прозрачном фоне */
-            line-height: 0;
-        }
+        .logo { line-height: 0; }
         .logo img { 
             height: 60px; 
             width: auto; 
             display: block;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05)); /* легкая тень для объема */
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
         }
         .header-links a {
             color: var(--slate);
@@ -134,7 +133,7 @@
         .header-links a i { margin-right: 6px; color: var(--gold); }
         .header-links a:hover { border-bottom-color: var(--gold); }
 
-        /* HERO — выгода застройщика в первых строках */
+        /* HERO */
         .hero {
             padding: 40px 0 80px;
         }
@@ -180,7 +179,7 @@
             transform: rotate(2deg);
         }
 
-        /* преимущества с цифрами выгоды */
+        /* преимущества */
         .features {
             padding: 80px 0;
         }
@@ -214,7 +213,7 @@
             display: block;
         }
 
-        /* ценовой блок — акцент на юрлицах и экономии */
+        /* прайс */
         .pricing {
             padding: 60px 0 100px;
         }
@@ -257,7 +256,7 @@
         }
         .price-feature-list i { color: var(--gold); width: 24px; }
 
-        /* блок "Застройщикам" — калькуляция выгоды */
+        /* блок застройщикам */
         .b2b-benefits {
             background: var(--mint);
             border-radius: 80px 20px 80px 20px;
@@ -292,9 +291,8 @@
             gap: 40px;
             margin: 60px 0;
         }
-        .ozone-wrap i { color: var(--slate); margin-right: 10px; }
 
-        /* бонус для отдела продаж */
+        /* бонус */
         .bonus-area {
             background: var(--slate);
             border-radius: 120px 20px 120px 20px;
@@ -338,7 +336,6 @@
             border-radius: 30px;
             margin-top: 25px;
         }
-        .address-box i { margin-right: 8px; }
         .copyright {
             text-align: center;
             border-top: 1px solid #617388;
@@ -362,13 +359,12 @@
 <header>
     <div class="container header-flex">
         <div class="logo">
-            <!-- логотип на прозрачном фоне (фон убран) -->
             <img src="images/logo_cvet.png" alt="Марафет">
         </div>
         <div class="header-links">
-            <a href="#pricing"><i class="fa-regular fa-tag"></i>цены</a>
-            <a href="#b2b"><i class="fa-regular fa-building"></i>застройщикам</a>
-            <a href="#contacts"><i class="fa-regular fa-address-card"></i>контакты</a>
+            <a href="#pricing"><i class="fas fa-tag"></i>цены</a>
+            <a href="#b2b"><i class="fas fa-building"></i>застройщикам</a>
+            <a href="#contacts"><i class="fas fa-address-card"></i>контакты</a>
         </div>
     </div>
 </header>
@@ -376,15 +372,15 @@
 <section class="hero">
     <div class="container hero-grid">
         <div>
-            <div class="hero-badge"><i class="fa-regular fa-gem"></i> специальные условия для застройщиков</div>
+            <div class="hero-badge"><i class="fas fa-gem"></i> специальные условия для застройщиков</div>
             <h1>ваши квартиры <span>продаются быстрее</span><br>с идеальной чистотой «под ключ»</h1>
-            <p style="font-size: 1.3rem;"><i class="fa-regular fa-circle-check" style="color: var(--gold);"></i> Мы берём на себя уборку после строительства и предчистовую отделку — вы получаете довольных дольщиков и экономию до 30% на переделках.</p>
+            <p style="font-size: 1.3rem;"><i class="fas fa-check-circle" style="color: var(--gold);"></i> Мы берём на себя уборку после строительства и предчистовую отделку — вы получаете довольных дольщиков и экономию до 30% на переделках.</p>
             <div class="hero-stats">
-                <div class="stat-item"><i class="fa-regular fa-calendar" style="margin-right: 8px;"></i><span class="stat-number">2 300+</span> <br>квартир сдано</div>
-                <div class="stat-item"><i class="fa-regular fa-clock" style="margin-right: 8px;"></i><span class="stat-number">−2,5 дня</span> <br>сокращение приёмки</div>
+                <div class="stat-item"><i class="fas fa-calendar-alt" style="margin-right: 8px;"></i><span class="stat-number">2 300+</span> <br>квартир сдано</div>
+                <div class="stat-item"><i class="fas fa-clock" style="margin-right: 8px;"></i><span class="stat-number">−2,5 дня</span> <br>сокращение приёмки</div>
             </div>
-            <a href="#b2b" class="btn"><i class="fa-regular fa-file-lines"></i> Рассчитать выгоду под ваш ЖК</a>
-            <a href="#contacts" class="btn btn-soft" style="margin-left: 15px;"><i class="fa-brands fa-whatsapp"></i> whatsapp</a>
+            <a href="#b2b" class="btn"><i class="fas fa-file-alt"></i> Рассчитать выгоду под ваш ЖК</a>
+            <a href="#contacts" class="btn btn-soft" style="margin-left: 15px;"><i class="fab fa-whatsapp"></i> whatsapp</a>
         </div>
         <div class="hero-bg-shape"></div>
     </div>
@@ -392,22 +388,22 @@
 
 <section class="features">
     <div class="container">
-        <h2><i class="fa-regular fa-chart-line" style="margin-right: 15px;"></i> выгода для застройщика — в цифрах</h2>
+        <h2><i class="fas fa-chart-line" style="margin-right: 15px;"></i> выгода для застройщика — в цифрах</h2>
         <div class="features-grid">
             <div class="feat-card">
-                <div class="feat-icon"><i class="fa-regular fa-calendar-check"></i></div>
+                <div class="feat-icon"><i class="fas fa-calendar-check"></i></div>
                 <span class="highlight-number">-3 дня</span>
                 <h3>на приёмке каждой квартиры</h3>
                 <p>Не тратите ресурсы на устранение замечаний по чистоте — ключи передаются с первого показа.</p>
             </div>
             <div class="feat-card">
-                <div class="feat-icon"><i class="fa-regular fa-face-smile"></i></div>
+                <div class="feat-icon"><i class="fas fa-smile"></i></div>
                 <span class="highlight-number">до 40%</span>
                 <h3>выше лояльность</h3>
                 <p>Квартиры без строительной пыли и запахов вызывают доверие и повышают аппетит покупателей.</p>
             </div>
             <div class="feat-card">
-                <div class="feat-icon"><i class="fa-regular fa-coins"></i></div>
+                <div class="feat-icon"><i class="fas fa-coins"></i></div>
                 <span class="highlight-number">экономия 25%</span>
                 <h3>на клининге vs содержание штата</h3>
                 <p>Аутсорсинг без налогов, больничных и простоев. Работаем с НДС и закрывающими документами.</p>
@@ -420,131 +416,135 @@
 <section id="b2b" class="b2b-benefits">
     <div class="b2b-grid">
         <div>
-            <h2 style="color: #1F2E3A;"><i class="fa-regular fa-broom-wide" style="margin-right: 12px;"></i>чистота как часть вашего продукта</h2>
+            <h2 style="color: #1F2E3A;"><i class="fas fa-broom" style="margin-right: 12px;"></i>чистота как часть вашего продукта</h2>
             <ul class="b2b-list">
-                <li><i class="fa-regular fa-brush"></i> <strong>Послестроительная уборка</strong> — удаляем цемент, герметик, пыль со стен и окон. Квартира готова к показу за 1 день.</li>
-                <li><i class="fa-regular fa-paint-roller"></i> <strong>Предчистовая уборка</strong> — перед финишной отделкой, чтобы ЛКМ и обои легли идеально.</li>
-                <li><i class="fa-regular fa-key"></i> <strong>Уборка перед выдачей ключей</strong> — хрустальная чистота для первого впечатления.</li>
-                <li><i class="fa-regular fa-ticket"></i> <strong>Сертификаты на уборку</strong> для ваших клиентов — бесплатный инструмент повышения лояльности.</li>
+                <li><i class="fas fa-paint-roller"></i> <strong>Послестроительная уборка</strong> — удаляем цемент, герметик, пыль со стен и окон. Квартира готова к показу за 1 день.</li>
+                <li><i class="fas fa-brush"></i> <strong>Предчистовая уборка</strong> — перед финишной отделкой, чтобы ЛКМ и обои легли идеально.</li>
+                <li><i class="fas fa-key"></i> <strong>Уборка перед выдачей ключей</strong> — хрустальная чистота для первого впечатления.</li>
+                <li><i class="fas fa-ticket-alt"></i> <strong>Сертификаты на уборку</strong> для ваших клиентов — бесплатный инструмент повышения лояльности.</li>
             </ul>
             <div style="background: white; border-radius: 30px; padding: 30px; margin-top: 30px;">
-                <p style="font-weight: 700; font-size: 1.6rem; margin-bottom: 0;"><i class="fa-regular fa-file-signature"></i> Комплексный договор на весь жилой комплекс</p>
+                <p style="font-weight: 700; font-size: 1.6rem; margin-bottom: 0;"><i class="fas fa-file-signature"></i> Комплексный договор на весь жилой комплекс</p>
                 <p>Фиксированные цены на сезон, скидка от объёма, индивидуальный график.</p>
             </div>
         </div>
         <div style="background: white; border-radius: 60px; padding: 40px;">
-            <p style="font-weight: 600; font-size: 1.8rem;"><i class="fa-regular fa-calculator"></i> пример расчёта экономии</p>
-            <p style="font-size: 1.2rem;"><i class="fa-regular fa-circle-check" style="color: var(--gold);"></i> ЖК на 150 квартир</p>
-            <p style="font-size: 1.2rem;"><i class="fa-regular fa-circle-check" style="color: var(--gold);"></i> средняя уборка 1 квартиры — 4 500 ₽</p>
-            <p style="font-size: 1.2rem;"><i class="fa-regular fa-circle-check" style="color: var(--gold);"></i> ваш штатный сотрудник обходится в 2,2 раза дороже с учётом налогов, инвентаря, контроля.</p>
-            <p style="font-size: 1.8rem; font-weight: 700; margin-top: 30px;"><i class="fa-regular fa-sack-dollar"></i> выгода до 240 000 ₽ на каждом корпусе</p>
+            <p style="font-weight: 600; font-size: 1.8rem;"><i class="fas fa-calculator"></i> пример расчёта экономии</p>
+            <p style="font-size: 1.2rem;"><i class="fas fa-check-circle" style="color: var(--gold);"></i> ЖК на 150 квартир</p>
+            <p style="font-size: 1.2rem;"><i class="fas fa-check-circle" style="color: var(--gold);"></i> средняя уборка 1 квартиры — 4 500 ₽</p>
+            <p style="font-size: 1.2rem;"><i class="fas fa-check-circle" style="color: var(--gold);"></i> ваш штатный сотрудник обходится в 2,2 раза дороже с учётом налогов, инвентаря, контроля.</p>
+            <p style="font-size: 1.8rem; font-weight: 700; margin-top: 30px;"><i class="fas fa-sack-dollar"></i> выгода до 240 000 ₽ на каждом корпусе</p>
         </div>
     </div>
 </section>
 
-<!-- ПРАЙС С ВЫДЕЛЕНИЕМ УСЛУГ ДЛЯ ЗАСТРОЙЩИКОВ -->
+<!-- ПРАЙС -->
 <section id="pricing" class="pricing">
     <div class="container">
-        <h2><i class="fa-regular fa-ruble-sign" style="margin-right: 12px;"></i>цены для юрлиц (с НДС / без НДС)</h2>
+        <h2><i class="fas fa-ruble-sign" style="margin-right: 12px;"></i>цены для юрлиц (с НДС / без НДС)</h2>
         <div class="pricing-grid">
             <div class="price-item">
-                <div class="price-title"><i class="fa-regular fa-sparkles"></i> поддерживающая</div>
+                <div class="price-title"><i class="fas fa-broom"></i> поддерживающая</div>
                 <div class="price-amount">90 ₽<small>/м²</small></div>
                 <ul class="price-feature-list">
-                    <li><i class="fa-regular fa-circle-check"></i> обеспыливание</li>
-                    <li><i class="fa-regular fa-circle-check"></i> сантехника, зеркала</li>
-                    <li><i class="fa-regular fa-circle-check"></i> влажная уборка</li>
+                    <li><i class="fas fa-check-circle"></i> обеспыливание</li>
+                    <li><i class="fas fa-check-circle"></i> сантехника, зеркала</li>
+                    <li><i class="fas fa-check-circle"></i> влажная уборка</li>
                 </ul>
-                <a href="#contacts" class="btn btn-outline-slate" style="width:100%;"><i class="fa-regular fa-file-pdf"></i> запросить КП</a>
+                <a href="#contacts" class="btn btn-outline-slate" style="width:100%;"><i class="fas fa-file-pdf"></i> запросить КП</a>
             </div>
             <div class="price-item popular">
-                <div class="price-title"><i class="fa-regular fa-crown" style="color: var(--gold);"></i> послестроительная</div>
+                <div class="price-title"><i class="fas fa-crown" style="color: var(--gold);"></i> послестроительная</div>
                 <div class="price-amount">140 ₽<small>/м²</small></div>
                 <ul class="price-feature-list">
-                    <li><i class="fa-regular fa-circle-check"></i> удаление цемента, затирки</li>
-                    <li><i class="fa-regular fa-circle-check"></i> мойка окон и откосов</li>
-                    <li><i class="fa-regular fa-circle-check"></i> обеспыливание стен/потолков</li>
-                    <li><i class="fa-regular fa-circle-check"></i> финальная полировка</li>
+                    <li><i class="fas fa-check-circle"></i> удаление цемента, затирки</li>
+                    <li><i class="fas fa-check-circle"></i> мойка окон и откосов</li>
+                    <li><i class="fas fa-check-circle"></i> обеспыливание стен/потолков</li>
+                    <li><i class="fas fa-check-circle"></i> финальная полировка</li>
                 </ul>
-                <a href="#contacts" class="btn btn-soft" style="width:100%;"><i class="fa-regular fa-hand-pointer"></i> выбрать</a>
+                <a href="#contacts" class="btn btn-soft" style="width:100%;"><i class="fas fa-hand-pointer"></i> выбрать</a>
             </div>
             <div class="price-item">
-                <div class="price-title"><i class="fa-regular fa-broom"></i> генеральная</div>
+                <div class="price-title"><i class="fas fa-sparkles"></i> генеральная</div>
                 <div class="price-amount">120 ₽<small>/м²</small></div>
                 <ul class="price-feature-list">
-                    <li><i class="fa-regular fa-circle-check"></i> люстры, двери</li>
-                    <li><i class="fa-regular fa-circle-check"></i> мойка окон (опционально)</li>
+                    <li><i class="fas fa-check-circle"></i> люстры, двери</li>
+                    <li><i class="fas fa-check-circle"></i> мойка окон (опционально)</li>
                 </ul>
-                <a href="#contacts" class="btn btn-outline-slate" style="width:100%;"><i class="fa-regular fa-envelope"></i> заказать</a>
+                <a href="#contacts" class="btn btn-outline-slate" style="width:100%;"><i class="fas fa-envelope"></i> заказать</a>
             </div>
             <div class="price-item">
-                <div class="price-title"><i class="fa-regular fa-soap"></i> химчистка</div>
+                <div class="price-title"><i class="fas fa-soap"></i> химчистка</div>
                 <div class="price-amount">150 ₽<small>/м²</small></div>
                 <ul class="price-feature-list">
-                    <li><i class="fa-regular fa-circle-check"></i> мягкая мебель</li>
-                    <li><i class="fa-regular fa-circle-check"></i> ковры, паласы</li>
+                    <li><i class="fas fa-check-circle"></i> мягкая мебель</li>
+                    <li><i class="fas fa-check-circle"></i> ковры, паласы</li>
                 </ul>
-                <a href="#contacts" class="btn btn-outline-slate" style="width:100%;"><i class="fa-regular fa-calendar"></i> заказать</a>
+                <a href="#contacts" class="btn btn-outline-slate" style="width:100%;"><i class="fas fa-calendar-alt"></i> заказать</a>
             </div>
         </div>
-        <p style="text-align: center; margin-top: 40px;"><i class="fa-regular fa-info-circle"></i> * Итоговая стоимость зависит от объёма и этажа. Работаем по безналу, без задержек.</p>
+        <p style="text-align: center; margin-top: 40px;"><i class="fas fa-info-circle"></i> * Итоговая стоимость зависит от объёма и этажа. Работаем по безналу, без задержек.</p>
     </div>
 </section>
 
-<!-- ОЗОНИРОВАНИЕ (актуально для новостроек) -->
+<!-- ОЗОНИРОВАНИЕ -->
 <section>
     <div class="container ozone-wrap">
         <div>
-            <span class="hero-badge" style="background: var(--slate); color:white;"><i class="fa-regular fa-wind"></i> фишка для новостройки</span>
+            <span class="hero-badge" style="background: var(--slate); color:white;"><i class="fas fa-wind"></i> фишка для новостройки</span>
             <h2 style="color:#1F2E3A;">озонирование — убирает «запах новой квартиры»</h2>
-            <p><i class="fa-regular fa-flask"></i> Летучие соединения от красок, клея, герметиков — частая причина недовольства. Озон нейтрализует запахи и бактерий, распадаясь на кислород.</p>
+            <p><i class="fas fa-flask"></i> Летучие соединения от красок, клея, герметиков — частая причина недовольства. Озон нейтрализует запахи и бактерий, распадаясь на кислород.</p>
             <ul class="b2b-list" style="margin-top:20px;">
-                <li><i class="fa-regular fa-shield-check"></i> безопасно для людей и отделки</li>
-                <li><i class="fa-regular fa-clock"></i> помещение готово через 2 часа</li>
+                <li><i class="fas fa-shield-alt"></i> безопасно для людей и отделки</li>
+                <li><i class="fas fa-clock"></i> помещение готово через 2 часа</li>
             </ul>
-            <a href="#contacts" class="btn btn-outline-slate" style="margin-top:20px;"><i class="fa-regular fa-cloud-plus"></i> добавить озонирование в проект</a>
+            <a href="#contacts" class="btn btn-outline-slate" style="margin-top:20px;"><i class="fas fa-cloud-sun"></i> добавить озонирование в проект</a>
         </div>
         <div style="background: url('https://images.unsplash.com/photo-1584622050111-993a426fbf0a?w=800&auto=format&fit=crop') center/cover; border-radius: 60px; height: 300px;"></div>
     </div>
 </section>
 
-<!-- ПОДАРОК ОТДЕЛУ ПРОДАЖ -->
+<!-- ПОДАРОК -->
 <section class="bonus-area">
-    <h2><i class="fa-regular fa-gift" style="margin-right: 15px;"></i> бесплатный инструмент для ваших менеджеров</h2>
+    <h2><i class="fas fa-gift" style="margin-right: 15px;"></i> бесплатный инструмент для ваших менеджеров</h2>
     <div class="bonus-highlight">скидка 15%</div>
     <p style="color: #e9eef3; font-size: 1.5rem;">для каждого покупателя вашей квартиры</p>
-    <p style="max-width: 700px; margin: 30px auto;"><i class="fa-regular fa-message"></i> Мы дарим вашим клиентам сертификат на первую уборку или химчистку. Вы получаете дополнительный аргумент «Почему стоит купить именно у нас».</p>
-    <a href="#contacts" class="btn" style="background: var(--gold); color: var(--slate);"><i class="fa-regular fa-file-certificate"></i> запросить макеты сертификатов</a>
+    <p style="max-width: 700px; margin: 30px auto;"><i class="fas fa-comment"></i> Мы дарим вашим клиентам сертификат на первую уборку или химчистку. Вы получаете дополнительный аргумент «Почему стоит купить именно у нас».</p>
+    <a href="#contacts" class="btn" style="background: var(--gold); color: var(--slate);"><i class="fas fa-certificate"></i> запросить макеты сертификатов</a>
 </section>
 
 <footer id="contacts">
     <div class="container">
         <div class="footer-inner">
             <div>
-                <h3><i class="fa-regular fa-helmet-safety"></i> МАРАФЕТ для застройщиков</h3>
+                <h3><i class="fas fa-hard-hat"></i> МАРАФЕТ для застройщиков</h3>
                 <p>Работаем с девелоперами, подрядчиками и УК. Барнаул / Новоалтайск.</p>
                 <div class="address-box">
-                    <i class="fa-regular fa-location-dot"></i> ул. Никитина, 146-1<br>
-                    <i class="fa-regular fa-clock"></i> пн-вс 08:00–22:00
+                    <i class="fas fa-map-marker-alt"></i> ул. Никитина, 146-1<br>
+                    <i class="fas fa-clock"></i> пн-вс 08:00–22:00
                 </div>
             </div>
             <div>
-                <h3><i class="fa-regular fa-user-tie"></i> персональный менеджер</h3>
-                <p><i class="fa-regular fa-phone"></i> <a href="tel:+79635217532">+7 (963) 521-75-32</a><br>
-                <i class="fa-brands fa-whatsapp"></i> <a href="https://wa.me/79635217532">WhatsApp (круглосуточно)</a><br>
-                <i class="fa-regular fa-envelope"></i> <a href="mailto:b2b@marafet22.ru">b2b@marafet22.ru</a></p>
+                <h3><i class="fas fa-user-tie"></i> персональный менеджер</h3>
+                <p><i class="fas fa-phone-alt"></i> <a href="tel:+79635217532">+7 (963) 521-75-32</a><br>
+                <i class="fab fa-whatsapp"></i> <a href="https://wa.me/79635217532">WhatsApp (круглосуточно)</a><br>
+                <i class="fas fa-envelope"></i> <a href="mailto:b2b@marafet22.ru">b2b@marafet22.ru</a></p>
             </div>
             <div>
-                <h3><i class="fa-regular fa-pen-to-square"></i> напишите нам — пришлём коммерческое предложение под ваш ЖК</h3>
-                <a href="https://wa.me/79635217532" class="btn btn-soft" style="margin-bottom: 10px;"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a><br>
-                <a href="tel:+79635217532" class="btn btn-outline-slate"><i class="fa-regular fa-phone"></i> позвонить сейчас</a>
+                <h3><i class="fas fa-pen"></i> напишите нам — пришлём КП под ваш ЖК</h3>
+                <a href="https://wa.me/79635217532" class="btn btn-soft" style="margin-bottom: 10px;"><i class="fab fa-whatsapp"></i> WhatsApp</a><br>
+                <a href="tel:+79635217532" class="btn btn-outline-slate"><i class="fas fa-phone-alt"></i> позвонить сейчас</a>
             </div>
         </div>
         <div class="copyright">
-            <i class="fa-regular fa-copyright"></i> 2020–2026 МАРАФЕТ · предложение для застройщиков · данные актуальны на 2026 г.
+            <i class="far fa-copyright"></i> 2020–2026 МАРАФЕТ · предложение для застройщиков · данные актуальны на 2026 г.
         </div>
     </div>
 </footer>
 
+<!-- Дополнительная проверка иконок (текст на случай отказа CDN) -->
+<noscript>
+    <div style="background: #ffdddd; padding: 10px; text-align: center;">Для отображения иконок включите JavaScript или обновите страницу.</div>
+</noscript>
 </body>
 </html>
