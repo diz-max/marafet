@@ -1,1 +1,888 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Марафет — Чистота без усилий в Барнауле</title>
+    <style>
+        /* Подключаем современные шрифты */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
+        
+        /* Сброс стилей и базовые настройки */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #2A7A62;      /* Благородный зеленый */
+            --primary-dark: #1E5C49;
+            --accent: #FF8A5C;       /* Теплый оранжевый для акцентов */
+            --dark: #2D3E50;
+            --gray: #F5F7FA;
+            --text: #4A5568;
+            --white: #FFFFFF;
+            --shadow: 0 20px 40px -15px rgba(0,0,0,0.1);
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Типографика */
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--dark);
+        }
+        
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+        }
+        
+        h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        h2:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+        
+        /* Кнопки */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 10px 20px -8px rgba(42, 122, 98, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px -8px rgba(42, 122, 98, 0.4);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+        
+        /* Навигация */
+        .navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-phone {
+            font-weight: 600;
+            color: var(--primary) !important;
+            font-size: 1.1rem;
+        }
+        
+        /* Hero секция */
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #F8FBF9 0%, #FFFFFF 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(42,122,98,0.03) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--text);
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .stat-item {
+            text-align: left;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text);
+            opacity: 0.8;
+        }
+        
+        .hero-image {
+            position: relative;
+        }
+        
+        .hero-image img {
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        .experience-badge {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .experience-badge span {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            display: block;
+            line-height: 1;
+        }
+        
+        /* Секции */
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-light {
+            background: var(--white);
+        }
+        
+        .section-gray {
+            background: var(--gray);
+        }
+        
+        /* Услуги - карточки */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .service-card {
+            background: var(--white);
+            border-radius: 30px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.03);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 40px rgba(42,122,98,0.08);
+            border-color: var(--primary);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .service-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 1.5rem 0;
+        }
+        
+        .service-price small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text);
+            opacity: 0.7;
+        }
+        
+        .service-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .service-features li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .service-features li:before {
+            content: '✓';
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            font-weight: 600;
+        }
+        
+        .service-note {
+            font-size: 0.85rem;
+            color: #999;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+        
+        /* Преимущества - иконки */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        
+        .feature-item:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+        
+        .feature-item:hover h3,
+        .feature-item:hover p {
+            color: var(--white);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Галерея до/после */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-label {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        /* Как мы работаем */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .step {
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+        
+        /* Отзывы */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .testimonial-name {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .testimonial-source {
+            font-size: 0.85rem;
+            color: #999;
+        }
+        
+        .stars {
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+        
+        /* Контакты */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            background: var(--white);
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .contact-info {
+            padding: 3rem;
+            background: var(--primary);
+            color: var(--white);
+        }
+        
+        .contact-info h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-detail {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .contact-form {
+            padding: 3rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        /* Футер */
+        .footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-stats {
+                justify-content: center;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+        }
+        
+        /* Анимации */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .service-card, .feature-item, .step {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">МАРАФЕТ</a>
+            <div class="nav-links">
+                <a href="#services">Услуги</a>
+                <a href="#about">О нас</a>
+                <a href="#works">Работы</a>
+                <a href="#reviews">Отзывы</a>
+                <a href="#contacts" class="nav-phone">+7 (XXX) XXX-XX-XX</a>
+            </div>
+        </div>
+    </nav>
 
+    <!-- Hero секция -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-subtitle">Клининг в Барнауле</div>
+                <h1>Чистота без усилий — уборка "под ключ"</h1>
+                <p class="hero-description">Профессиональный клининг для квартир, домов и офисов. Быстро, качественно, по честным ценам.</p>
+                <a href="#services" class="btn btn-primary">Заказать уборку</a>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">>2000</div>
+                        <div class="stat-label">выполненных уборок</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">лет опыта</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">довольных клиентов</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <img src="https://placehold.co/600x400/2A7A62/white?text=Чистота+в+каждой+детали" alt="Чистота в каждой детали">
+                <div class="experience-badge">
+                    <span>10 лет</span>
+                    безупречной работы
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- О компании -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2>О компании «Марафет»</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">«Марафет» — это чистота, которая приходит к вам домой.</p>
+                <p style="margin-bottom: 1rem;">Мы — профессиональная клининговая компания из Барнаула, которая заботится о вашем комфорте, времени и уюте. Наша миссия — сделать так, чтобы вы больше не тратили выходные на уборку, а могли наслаждаться безупречным порядком.</p>
+                <p>С 2020 года мы провели более 2000 уборок — от небольших квартир до просторных домов и офисов. Каждый клиент для нас — как сосед, которому хочется помочь навести идеальный «марафет».</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Услуги и цены -->
+    <section class="section section-gray" id="services">
+        <div class="container">
+            <h2>Виды уборки и цены</h2>
+            <div class="services-grid">
+                <!-- Поддерживающая уборка -->
+                <div class="service-card">
+                    <div class="service-icon">🧹</div>
+                    <h3>Поддерживающая</h3>
+                    <div class="service-price">от 90 ₽<small>/м²</small></div>
+                    <ul class="service-features">
+                        <li>Обеспыливание поверхностей</li>
+                        <li>Мойка дверей, выключателей</li>
+                        <li>Протирка окон (локально)</li>
+                        <li>Сухой пылесос и мойка пола</li>
+                        <li>Обезжиривание кухни</li>
+                        <li>Чистка сантехники</li>
+                    </ul>
+                    <a href="#contacts" class="btn btn-outline" style="width: 100%; text-align: center;">Заказать</a>
+                    <div class="service-note">*инвентарь и средства за счет заказчика</div>
+                </div>
+
+                <!-- Генеральная уборка -->
+                <div class="service-card">
+                    <div class="service-icon">✨</div>
+                    <h3>Генеральная</h3>
+                    <div class="service-price">от 120 ₽<small>/м²</small></div>
+                    <ul class="service-features">
+                        <li>Комплексная уборка помещений</li>
+                        <li>Чистка сантехники в круговую</li>
+                        <li>Обезжиривание кухонной зоны</li>
+                        <li>Мытьё полов и дверей</li>
+                        <li>Чистка зеркал и люстр</li>
+                        <li>Вынос мусора</li>
+                    </ul>
+                    <a href="#contacts" class="btn btn-outline" style="width: 100%; text-align: center;">Заказать</a>
+                    <div class="service-note">*мойка окон считается отдельно</div>
+                </div>
+
+                <!-- После ремонта -->
+                <div class="service-card">
+                    <div class="service-icon">🏗️</div>
+                    <h3>После ремонта</h3>
+                    <div class="service-price">от 140 ₽<small>/м²</small></div>
+                    <ul class="service-features">
+                        <li>Обеспыливание стен и потолков</li>
+                        <li>Чистка осветительных приборов</li>
+                        <li>Удаление стройматериалов с пола</li>
+                        <li>Мойка дверей и откосов</li>
+                        <li>Чистка сантехники и кафеля</li>
+                        <li>Протирка мебели внутри и снаружи</li>
+                    </ul>
+                    <a href="#contacts" class="btn btn-outline" style="width: 100%; text-align: center;">Заказать</a>
+                    <div class="service-note">*мойка окон считается отдельно</div>
+                </div>
+            </div>
+
+            <!-- Химчистка отдельно -->
+            <div style="margin-top: 4rem;">
+                <h3 style="text-align: center; margin-bottom: 2rem;">Химчистка мебели и ковров</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; text-align: center;">
+                    <div style="padding: 1rem; background: white; border-radius: 10px;">🛋️ Кресла</div>
+                    <div style="padding: 1rem; background: white; border-radius: 10px;">🛏️ Диваны</div>
+                    <div style="padding: 1rem; background: white; border-radius: 10px;">🛏️ Матрасы</div>
+                    <div style="padding: 1rem; background: white; border-radius: 10px;">🧶 Ковры</div>
+                    <div style="padding: 1rem; background: white; border-radius: 10px;">🍽️ Кухонные уголки</div>
+                    <div style="padding: 1rem; background: white; border-radius: 10px;">🪑 Подушки</div>
+                </div>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <span style="font-size: 2rem; font-weight: 700; color: var(--primary);">от 150 ₽/м²</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="section">
+        <div class="container">
+            <h2>Почему выбирают нас</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">⭐</div>
+                    <h3>Опыт более 10 лет</h3>
+                    <p>Наши специалисты имеют многолетний стаж в сфере клининга</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🌿</div>
+                    <h3>Гипоаллергенные средства</h3>
+                    <p>Безопасно для детей и домашних животных</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📋</div>
+                    <h3>Работаем по договору</h3>
+                    <p>Все документы для отчетности</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📸</div>
+                    <h3>Расчёт по фото</h3>
+                    <p>Оценим стоимость по фотографии</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Выезд в день обращения</h3>
+                    <p>Работаем оперативно</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Скорость и качество</h3>
+                    <p>Дорожим репутацией</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Результаты работ -->
+    <section class="section section-gray" id="works">
+        <div class="container">
+            <h2>Результаты наших работ</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Никакого фотошопа!</p>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <span class="gallery-label">До/После</span>
+                    <img src="https://placehold.co/600x400/4A5568/white?text=Кухня+до+уборки" alt="Кухня до уборки">
+                </div>
+                <div class="gallery-item">
+                    <span class="gallery-label">До/После</span>
+                    <img src="https://placehold.co/600x400/2A7A62/white?text=Кухня+после+уборки" alt="Кухня после уборки">
+                </div>
+                <div class="gallery-item">
+                    <span class="gallery-label">До/После</span>
+                    <img src="https://placehold.co/600x400/4A5568/white?text=Ванная+до" alt="Ванная до">
+                </div>
+                <div class="gallery-item">
+                    <span class="gallery-label">До/После</span>
+                    <img src="https://placehold.co/600x400/2A7A62/white?text=Ванная+после" alt="Ванная после">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Как мы работаем -->
+    <section class="section">
+        <div class="container">
+            <h2>Как мы работаем</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Заявка</h3>
+                    <p>Оставьте заявку на сайте или по телефону</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Рассчитываем стоимость</h3>
+                    <p>Менеджер уточнит детали предстоящей уборки</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Наводим чистоту</h3>
+                    <p>В удобное время приедем и сделаем уборку</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Оплата</h3>
+                    <p>По факту работ, наличный и безналичный расчет</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section class="section section-gray" id="reviews">
+        <div class="container">
+            <h2>Отзывы клиентов</h2>
+            <div class="testimonials">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">👤</div>
+                        <div>
+                            <div class="testimonial-name">Маргарита Орлова</div>
+                            <div class="testimonial-source">Отзыв с Яндекс Карт</div>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p>Клининговая компания Марафет помогает мне с уборкой уже несколько лет! У меня новый ремонт, большая квартира, много светильников, люстр - сотрудники Марафет все делают идеально. Пыль убирает везде, ванная комната вся блестит! Весной помыли все окна и постирали шторы! Я довольна!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section class="section" id="contacts">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Свяжитесь с нами</h3>
+                    <p style="margin-bottom: 2rem;">Мы всегда на связи и готовы ответить на ваши вопросы</p>
+                    
+                    <div class="contact-detail">
+                        <span>📞</span>
+                        <span>+7 (XXX) XXX-XX-XX</span>
+                    </div>
+                    <div class="contact-detail">
+                        <span>📍</span>
+                        <span>Барнаул</span>
+                    </div>
+                    <div class="contact-detail">
+                        <span>⏰</span>
+                        <span>Ежедневно с 9:00 до 21:00</span>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3 style="margin-bottom: 2rem;">Оставьте заявку</h3>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Ваше имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Ваш телефон" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="4" placeholder="Комментарий"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Отправить заявку</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 Марафет — Клининговая компания в Барнауле</p>
+            <p style="margin-top: 1rem; opacity: 0.8;">Чистота, которой можно доверять</p>
+        </div>
+    </footer>
+</body>
+</html>
