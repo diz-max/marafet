@@ -2,17 +2,17 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>МАРАФЕТ · спецпредложение застройщикам</title>
     <!-- Google Fonts: Onest (современный) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome 6 (free) -- СТАБИЛЬНАЯ ССЫЛКА -->
+    <!-- Font Awesome 6 (стабильный CDN) -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0-beta3/css/all.css">
-    <!-- резервный CDN на всякий случай -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* ---------- ОБНУЛЕНИЕ И ПЕРЕМЕННЫЕ ---------- */
         * {
             margin: 0;
             padding: 0;
@@ -20,15 +20,16 @@
         }
 
         :root {
-            --bg: #F9F5F0;              /* тёплый светлый фон */
+            --bg: #F9F5F0;
             --paper: #FFFFFF;
             --sand: #F3E9DE;
             --dusty-rose: #E8CFC8;
             --mint: #C8E0D6;
-            --slate: #2F4858;            /* глубокий сине-серый */
+            --slate: #2F4858;
             --gold: #D8A48F;
             --shadow: 0 25px 40px -14px rgba(47,72,88,0.12);
             --border-radius-card: 40px;
+            --header-height: 80px;
         }
 
         body {
@@ -36,20 +37,24 @@
             background-color: var(--bg);
             color: var(--slate);
             line-height: 1.5;
+            overflow-x: hidden;
         }
+
         .container {
             max-width: 1300px;
             margin: 0 auto;
             padding: 0 24px;
+            width: 100%;
         }
 
+        /* типографика */
         h1, h2, h3 {
             font-weight: 600;
             letter-spacing: -0.02em;
             color: #1F2E3A;
         }
-        h1 { font-size: 4.2rem; line-height: 1.0; margin-bottom: 1.2rem; }
-        h2 { font-size: 2.8rem; margin-bottom: 2rem; display: inline-block; position: relative; }
+        h1 { font-size: clamp(2.5rem, 8vw, 4.2rem); line-height: 1.0; margin-bottom: 1.2rem; }
+        h2 { font-size: clamp(2rem, 6vw, 2.8rem); margin-bottom: 2rem; display: inline-block; position: relative; }
         h2::after {
             content: '';
             position: absolute;
@@ -60,26 +65,28 @@
             background: var(--gold);
             border-radius: 10px;
         }
-        h3 { font-size: 1.8rem; margin-bottom: 0.75rem; }
-        p { color: #3f5565; font-size: 1.1rem; margin-bottom: 1.8rem; }
+        h3 { font-size: clamp(1.3rem, 4vw, 1.8rem); margin-bottom: 0.75rem; }
+        p { color: #3f5565; font-size: 1rem; margin-bottom: 1.5rem; }
 
+        /* кнопки */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            padding: 16px 36px;
+            gap: 8px;
+            padding: 14px 28px;
             background-color: var(--slate);
             color: white;
             border-radius: 60px;
             font-weight: 600;
-            font-size: 1.05rem;
+            font-size: 1rem;
             border: 2px solid transparent;
             transition: 0.2s ease-out;
             box-shadow: 0 8px 14px -8px var(--slate);
             text-decoration: none;
+            white-space: nowrap;
         }
-        .btn i { font-size: 1.3rem; }
+        .btn i { font-size: 1.2rem; }
         .btn:hover {
             background-color: #1F2E3A;
             transform: translateY(-4px);
@@ -99,43 +106,155 @@
         }
         .btn-outline-slate:hover { background: var(--slate); color: white; }
 
-        /* header */
+        /* ---------- ШАПКА С МОБИЛЬНЫМ МЕНЮ ---------- */
         header {
-            padding: 24px 0;
             position: sticky;
             top: 0;
-            background: rgba(249,245,240,0.8);
-            backdrop-filter: blur(16px);
-            z-index: 10;
+            background: rgba(249,245,240,0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
         }
+
         .header-flex {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 100%;
         }
+
         .logo { line-height: 0; }
         .logo img { 
-            height: 60px; 
-            width: auto; 
+            height: 50px;
+            width: auto;
             display: block;
             filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
+            transition: height 0.2s;
         }
-        .header-links a {
+
+        /* навигация для десктопа */
+        .nav-links {
+            display: flex;
+            gap: 10px;
+        }
+        .nav-links a {
             color: var(--slate);
             font-weight: 600;
-            margin-left: 32px;
+            margin-left: 20px;
             font-size: 1.1rem;
             text-decoration: none;
             border-bottom: 2px solid transparent;
             padding-bottom: 4px;
             transition: 0.2s;
+            white-space: nowrap;
         }
-        .header-links a i { margin-right: 6px; color: var(--gold); }
-        .header-links a:hover { border-bottom-color: var(--gold); }
+        .nav-links a i { margin-right: 6px; color: var(--gold); }
+        .nav-links a:hover { border-bottom-color: var(--gold); }
 
-        /* HERO */
+        /* мобильный переключатель (бургер) */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1100;
+        }
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: var(--slate);
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+
+        /* мобильное меню (адаптив) */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--bg);
+            backdrop-filter: blur(12px);
+            z-index: 1050;
+            padding: 100px 40px 40px;
+            flex-direction: column;
+            gap: 30px;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.1);
+        }
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        .mobile-menu a {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--slate);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 2px solid var(--sand);
+            padding-bottom: 15px;
+        }
+        .mobile-menu a i {
+            color: var(--gold);
+            width: 40px;
+            font-size: 2rem;
+        }
+
+        /* ---------- АДАПТИВНЫЕ ПРАВИЛА ---------- */
+        @media (max-width: 992px) {
+            .nav-links { display: none; }
+            .menu-toggle { display: flex; }
+            .mobile-menu { display: flex; }
+            .header-flex .btn { display: none; } /* скрываем кнопку в хедере на мобилках */
+            
+            /* подстройка сеток */
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-grid { grid-template-columns: 1fr; }
+            .hero-bg-shape { height: 350px; }
+        }
+
+        @media (max-width: 768px) {
+            .features-grid { grid-template-columns: 1fr; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .b2b-grid { grid-template-columns: 1fr; }
+            .ozone-wrap { grid-template-columns: 1fr; }
+            .footer-inner { grid-template-columns: 1fr; }
+            
+            .hero-stats { flex-direction: column; gap: 15px; }
+            .hero-bg-shape { height: 280px; box-shadow: 20px 20px 0 var(--mint); }
+            
+            .b2b-benefits, .ozone-wrap, .bonus-area { padding: 50px 30px; }
+            .bonus-highlight { font-size: 2.5rem; padding: 10px 30px; }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 0 16px; }
+            h1 { font-size: 2.2rem; }
+            .hero-badge { font-size: 1rem; white-space: normal; }
+            .btn { padding: 12px 20px; font-size: 0.95rem; white-space: normal; }
+            .btn i { font-size: 1rem; }
+            .price-amount { font-size: 2.5rem; }
+            .stat-number { font-size: 1.8rem; }
+            .logo img { height: 42px; }
+            .mobile-menu a { font-size: 1.6rem; }
+        }
+
+        /* ---------- ОСНОВНЫЕ СТИЛИ БЛОКОВ (адаптивные) ---------- */
         .hero {
-            padding: 40px 0 80px;
+            padding: 40px 0 60px;
         }
         .hero-grid {
             display: grid;
@@ -166,6 +285,7 @@
             display: flex;
             gap: 40px;
             margin: 40px 0;
+            flex-wrap: wrap;
         }
         .stat-item { font-weight: 600; }
         .stat-number { font-size: 2rem; color: var(--slate); }
@@ -175,13 +295,13 @@
             border-radius: 80px 80px 80px 20px;
             background-image: url('https://images.unsplash.com/photo-1581578731117-10d52143b0d8?w=800&auto=format&fit=crop');
             background-size: cover;
+            background-position: center;
             box-shadow: 40px 40px 0 var(--mint);
             transform: rotate(2deg);
         }
 
-        /* преимущества */
         .features {
-            padding: 80px 0;
+            padding: 60px 0;
         }
         .features-grid {
             display: grid;
@@ -191,31 +311,30 @@
         .feat-card {
             background: var(--paper);
             border-radius: var(--border-radius-card);
-            padding: 40px 30px;
+            padding: 30px 25px;
             box-shadow: var(--shadow);
         }
         .feat-icon {
             background: var(--mint);
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             border-radius: 30px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             color: var(--slate);
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
         .highlight-number {
-            font-size: 2.4rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--gold);
             display: block;
         }
 
-        /* прайс */
         .pricing {
-            padding: 60px 0 100px;
+            padding: 60px 0 80px;
         }
         .pricing-grid {
             display: grid;
@@ -225,7 +344,7 @@
         .price-item {
             background: var(--paper);
             border-radius: 30px;
-            padding: 40px 24px;
+            padding: 30px 20px;
             box-shadow: var(--shadow);
             border: 2px solid transparent;
             transition: transform 0.2s;
@@ -236,121 +355,109 @@
             transform: scale(1.02);
         }
         .price-item:hover { transform: translateY(-8px); }
-        .price-title { font-size: 1.8rem; font-weight: 600; }
-        .price-title i { margin-right: 8px; color: var(--gold); font-size: 1.6rem; }
+        .price-title { font-size: 1.5rem; font-weight: 600; }
+        .price-title i { margin-right: 6px; color: var(--gold); }
         .price-amount {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            margin: 25px 0;
+            margin: 20px 0;
         }
-        .price-amount small { font-size: 1rem; font-weight: 400; color: #556e82; }
+        .price-amount small { font-size: 0.9rem; color: #556e82; }
         .price-feature-list {
             list-style: none;
-            margin: 30px 0;
+            margin: 25px 0;
         }
         .price-feature-list li {
             padding: 6px 0;
             border-bottom: 1px dashed var(--sand);
             display: flex;
             gap: 8px;
+            font-size: 0.95rem;
         }
-        .price-feature-list i { color: var(--gold); width: 24px; }
+        .price-feature-list i { color: var(--gold); width: 20px; }
 
-        /* блок застройщикам */
         .b2b-benefits {
             background: var(--mint);
             border-radius: 80px 20px 80px 20px;
-            padding: 80px 60px;
-            margin: 60px 0;
+            padding: 70px 50px;
+            margin: 50px 0;
         }
         .b2b-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 40px;
             align-items: center;
         }
         .b2b-list {
             list-style: none;
         }
         .b2b-list li {
-            font-size: 1.3rem;
-            margin-bottom: 24px;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
             display: flex;
             gap: 15px;
             font-weight: 500;
         }
-        .b2b-list i { color: var(--slate); width: 32px; font-size: 1.6rem; }
+        .b2b-list i { color: var(--slate); width: 32px; font-size: 1.5rem; }
 
-        /* озонирование */
         .ozone-wrap {
             background: var(--sand);
             border-radius: 80px 20px 80px 20px;
-            padding: 70px 50px;
+            padding: 60px 40px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
-            margin: 60px 0;
+            margin: 50px 0;
         }
 
-        /* бонус */
         .bonus-area {
             background: var(--slate);
             border-radius: 120px 20px 120px 20px;
-            padding: 80px 60px;
+            padding: 60px 40px;
             text-align: center;
             color: white;
             margin: 40px 0;
         }
         .bonus-area h2 { color: white; }
-        .bonus-area h2::after { background: var(--gold); }
+        .bonus-area h2::after { background: var(--gold); left: 50%; transform: translateX(-50%); width: 120px; }
         .bonus-highlight {
-            font-size: 3.5rem;
+            font-size: clamp(2rem, 8vw, 3.5rem);
             font-weight: 800;
             background: var(--gold);
             color: var(--slate);
             display: inline-block;
-            padding: 12px 60px;
+            padding: 12px 40px;
             border-radius: 90px;
             margin: 30px 0 20px;
         }
 
-        /* футер */
         footer {
             background: var(--slate);
             color: #dfe7ed;
-            padding: 70px 0 30px;
+            padding: 60px 0 30px;
             border-radius: 60px 60px 0 0;
-            margin-top: 80px;
+            margin-top: 60px;
         }
         .footer-inner {
             display: grid;
             grid-template-columns: 1.5fr 1fr 1.5fr;
-            gap: 50px;
+            gap: 40px;
         }
         .footer-inner a { color: #f0eae2; text-decoration: none; }
-        .footer-inner h3 { color: white; }
+        .footer-inner h3 { color: white; font-size: 1.3rem; }
         .footer-inner i { color: var(--gold); width: 28px; margin-right: 8px; }
         .address-box {
             background: #3f586b;
-            padding: 25px;
+            padding: 20px;
             border-radius: 30px;
-            margin-top: 25px;
+            margin-top: 20px;
         }
         .copyright {
             text-align: center;
             border-top: 1px solid #617388;
-            padding-top: 30px;
-            margin-top: 50px;
-        }
-
-        @media (max-width: 1100px) {
-            .hero-grid, .b2b-grid, .ozone-wrap { grid-template-columns: 1fr; }
-            .features-grid { grid-template-columns: 1fr 1fr; }
-            .pricing-grid { grid-template-columns: repeat(2,1fr); }
-            .footer-inner { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 700px) {
-            .features-grid, .pricing-grid { grid-template-columns: 1fr; }
+            padding-top: 25px;
+            margin-top: 40px;
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -361,23 +468,68 @@
         <div class="logo">
             <img src="images/logo_cvet.png" alt="Марафет">
         </div>
-        <div class="header-links">
+        
+        <!-- Десктопная навигация -->
+        <div class="nav-links">
             <a href="#pricing"><i class="fas fa-tag"></i>цены</a>
             <a href="#b2b"><i class="fas fa-building"></i>застройщикам</a>
             <a href="#contacts"><i class="fas fa-address-card"></i>контакты</a>
         </div>
+
+        <!-- Бургер-иконка -->
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Кнопка в хедере (только для больших экранов) -->
+        <a href="#contacts" class="btn btn-soft" style="margin-left: 20px;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    </div>
+
+    <!-- Мобильное меню (выезжающее) -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#pricing" onclick="closeMenu()"><i class="fas fa-tag"></i> цены</a>
+        <a href="#b2b" onclick="closeMenu()"><i class="fas fa-building"></i> застройщикам</a>
+        <a href="#contacts" onclick="closeMenu()"><i class="fas fa-address-card"></i> контакты</a>
+        <a href="tel:+79635217532" onclick="closeMenu()"><i class="fas fa-phone-alt"></i> позвонить</a>
+        <a href="https://wa.me/79635217532" onclick="closeMenu()"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     </div>
 </header>
+
+<!-- скрипт для мобильного меню -->
+<script>
+    const toggle = document.getElementById('menuToggle');
+    const menu = document.getElementById('mobileMenu');
+    if (toggle && menu) {
+        toggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            menu.classList.toggle('active');
+            document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+        });
+    }
+    function closeMenu() {
+        if (menu) menu.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    // закрытие по клику вне меню (опционально)
+    document.addEventListener('click', (e) => {
+        if (menu && menu.classList.contains('active') && !menu.contains(e.target) && !toggle.contains(e.target)) {
+            menu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+</script>
 
 <section class="hero">
     <div class="container hero-grid">
         <div>
             <div class="hero-badge"><i class="fas fa-gem"></i> специальные условия для застройщиков</div>
             <h1>ваши квартиры <span>продаются быстрее</span><br>с идеальной чистотой «под ключ»</h1>
-            <p style="font-size: 1.3rem;"><i class="fas fa-check-circle" style="color: var(--gold);"></i> Мы берём на себя уборку после строительства и предчистовую отделку — вы получаете довольных дольщиков и экономию до 30% на переделках.</p>
+            <p><i class="fas fa-check-circle" style="color: var(--gold);"></i> Мы берём на себя уборку после строительства и предчистовую отделку — вы получаете довольных дольщиков и экономию до 30% на переделках.</p>
             <div class="hero-stats">
-                <div class="stat-item"><i class="fas fa-calendar-alt" style="margin-right: 8px;"></i><span class="stat-number">2 300+</span> <br>квартир сдано</div>
-                <div class="stat-item"><i class="fas fa-clock" style="margin-right: 8px;"></i><span class="stat-number">−2,5 дня</span> <br>сокращение приёмки</div>
+                <div class="stat-item"><i class="fas fa-calendar-alt"></i> <span class="stat-number">2 300+</span> <br>квартир сдано</div>
+                <div class="stat-item"><i class="fas fa-clock"></i> <span class="stat-number">−2,5 дня</span> <br>сокращение приёмки</div>
             </div>
             <a href="#b2b" class="btn"><i class="fas fa-file-alt"></i> Рассчитать выгоду под ваш ЖК</a>
             <a href="#contacts" class="btn btn-soft" style="margin-left: 15px;"><i class="fab fa-whatsapp"></i> whatsapp</a>
@@ -388,7 +540,7 @@
 
 <section class="features">
     <div class="container">
-        <h2><i class="fas fa-chart-line" style="margin-right: 15px;"></i> выгода для застройщика — в цифрах</h2>
+        <h2><i class="fas fa-chart-line"></i> выгода для застройщика — в цифрах</h2>
         <div class="features-grid">
             <div class="feat-card">
                 <div class="feat-icon"><i class="fas fa-calendar-check"></i></div>
@@ -400,48 +552,46 @@
                 <div class="feat-icon"><i class="fas fa-smile"></i></div>
                 <span class="highlight-number">до 40%</span>
                 <h3>выше лояльность</h3>
-                <p>Квартиры без строительной пыли и запахов вызывают доверие и повышают аппетит покупателей.</p>
+                <p>Квартиры без строительной пыли и запахов вызывают доверие.</p>
             </div>
             <div class="feat-card">
                 <div class="feat-icon"><i class="fas fa-coins"></i></div>
                 <span class="highlight-number">экономия 25%</span>
                 <h3>на клининге vs содержание штата</h3>
-                <p>Аутсорсинг без налогов, больничных и простоев. Работаем с НДС и закрывающими документами.</p>
+                <p>Аутсорсинг без налогов, больничных и простоев.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- СПЕЦИАЛЬНЫЙ БЛОК ДЛЯ ЗАСТРОЙЩИКОВ -->
 <section id="b2b" class="b2b-benefits">
     <div class="b2b-grid">
         <div>
-            <h2 style="color: #1F2E3A;"><i class="fas fa-broom" style="margin-right: 12px;"></i>чистота как часть вашего продукта</h2>
+            <h2 style="color: #1F2E3A;"><i class="fas fa-broom"></i> чистота как часть вашего продукта</h2>
             <ul class="b2b-list">
-                <li><i class="fas fa-paint-roller"></i> <strong>Послестроительная уборка</strong> — удаляем цемент, герметик, пыль со стен и окон. Квартира готова к показу за 1 день.</li>
-                <li><i class="fas fa-brush"></i> <strong>Предчистовая уборка</strong> — перед финишной отделкой, чтобы ЛКМ и обои легли идеально.</li>
-                <li><i class="fas fa-key"></i> <strong>Уборка перед выдачей ключей</strong> — хрустальная чистота для первого впечатления.</li>
-                <li><i class="fas fa-ticket-alt"></i> <strong>Сертификаты на уборку</strong> для ваших клиентов — бесплатный инструмент повышения лояльности.</li>
+                <li><i class="fas fa-paint-roller"></i> <strong>Послестроительная уборка</strong> — удаляем цемент, герметик, пыль. Квартира готова к показу за 1 день.</li>
+                <li><i class="fas fa-brush"></i> <strong>Предчистовая уборка</strong> — перед финишной отделкой.</li>
+                <li><i class="fas fa-key"></i> <strong>Уборка перед выдачей ключей</strong> — хрустальная чистота.</li>
+                <li><i class="fas fa-ticket-alt"></i> <strong>Сертификаты на уборку</strong> для ваших клиентов.</li>
             </ul>
-            <div style="background: white; border-radius: 30px; padding: 30px; margin-top: 30px;">
-                <p style="font-weight: 700; font-size: 1.6rem; margin-bottom: 0;"><i class="fas fa-file-signature"></i> Комплексный договор на весь жилой комплекс</p>
-                <p>Фиксированные цены на сезон, скидка от объёма, индивидуальный график.</p>
+            <div style="background: white; border-radius: 30px; padding: 25px; margin-top: 30px;">
+                <p style="font-weight: 700; font-size: 1.4rem;"><i class="fas fa-file-signature"></i> Комплексный договор на весь ЖК</p>
+                <p>Фиксированные цены, скидка от объёма.</p>
             </div>
         </div>
-        <div style="background: white; border-radius: 60px; padding: 40px;">
-            <p style="font-weight: 600; font-size: 1.8rem;"><i class="fas fa-calculator"></i> пример расчёта экономии</p>
-            <p style="font-size: 1.2rem;"><i class="fas fa-check-circle" style="color: var(--gold);"></i> ЖК на 150 квартир</p>
-            <p style="font-size: 1.2rem;"><i class="fas fa-check-circle" style="color: var(--gold);"></i> средняя уборка 1 квартиры — 4 500 ₽</p>
-            <p style="font-size: 1.2rem;"><i class="fas fa-check-circle" style="color: var(--gold);"></i> ваш штатный сотрудник обходится в 2,2 раза дороже с учётом налогов, инвентаря, контроля.</p>
-            <p style="font-size: 1.8rem; font-weight: 700; margin-top: 30px;"><i class="fas fa-sack-dollar"></i> выгода до 240 000 ₽ на каждом корпусе</p>
+        <div style="background: white; border-radius: 50px; padding: 30px;">
+            <p style="font-weight: 600; font-size: 1.6rem;"><i class="fas fa-calculator"></i> пример расчёта</p>
+            <p><i class="fas fa-check-circle" style="color: var(--gold);"></i> ЖК на 150 квартир</p>
+            <p><i class="fas fa-check-circle" style="color: var(--gold);"></i> средняя уборка — 4 500 ₽</p>
+            <p><i class="fas fa-check-circle" style="color: var(--gold);"></i> штат дороже в 2,2 раза</p>
+            <p style="font-size: 1.6rem; font-weight: 700; margin-top: 20px;"><i class="fas fa-sack-dollar"></i> выгода до 240 000 ₽</p>
         </div>
     </div>
 </section>
 
-<!-- ПРАЙС -->
 <section id="pricing" class="pricing">
     <div class="container">
-        <h2><i class="fas fa-ruble-sign" style="margin-right: 12px;"></i>цены для юрлиц (с НДС / без НДС)</h2>
+        <h2><i class="fas fa-ruble-sign"></i> цены для юрлиц (с НДС / без НДС)</h2>
         <div class="pricing-grid">
             <div class="price-item">
                 <div class="price-title"><i class="fas fa-broom"></i> поддерживающая</div>
@@ -449,102 +599,92 @@
                 <ul class="price-feature-list">
                     <li><i class="fas fa-check-circle"></i> обеспыливание</li>
                     <li><i class="fas fa-check-circle"></i> сантехника, зеркала</li>
-                    <li><i class="fas fa-check-circle"></i> влажная уборка</li>
                 </ul>
-                <a href="#contacts" class="btn btn-outline-slate" style="width:100%;"><i class="fas fa-file-pdf"></i> запросить КП</a>
+                <a href="#contacts" class="btn btn-outline-slate" style="width:100%;"><i class="fas fa-file-pdf"></i> КП</a>
             </div>
             <div class="price-item popular">
-                <div class="price-title"><i class="fas fa-crown" style="color: var(--gold);"></i> послестроительная</div>
+                <div class="price-title"><i class="fas fa-crown"></i> послестроительная</div>
                 <div class="price-amount">140 ₽<small>/м²</small></div>
                 <ul class="price-feature-list">
-                    <li><i class="fas fa-check-circle"></i> удаление цемента, затирки</li>
-                    <li><i class="fas fa-check-circle"></i> мойка окон и откосов</li>
-                    <li><i class="fas fa-check-circle"></i> обеспыливание стен/потолков</li>
-                    <li><i class="fas fa-check-circle"></i> финальная полировка</li>
+                    <li><i class="fas fa-check-circle"></i> удаление цемента</li>
+                    <li><i class="fas fa-check-circle"></i> мойка окон</li>
                 </ul>
-                <a href="#contacts" class="btn btn-soft" style="width:100%;"><i class="fas fa-hand-pointer"></i> выбрать</a>
+                <a href="#contacts" class="btn btn-soft" style="width:100%;">выбрать</a>
             </div>
             <div class="price-item">
                 <div class="price-title"><i class="fas fa-sparkles"></i> генеральная</div>
                 <div class="price-amount">120 ₽<small>/м²</small></div>
                 <ul class="price-feature-list">
                     <li><i class="fas fa-check-circle"></i> люстры, двери</li>
-                    <li><i class="fas fa-check-circle"></i> мойка окон (опционально)</li>
+                    <li><i class="fas fa-check-circle"></i> мойка окон</li>
                 </ul>
-                <a href="#contacts" class="btn btn-outline-slate" style="width:100%;"><i class="fas fa-envelope"></i> заказать</a>
+                <a href="#contacts" class="btn btn-outline-slate" style="width:100%;">заказ</a>
             </div>
             <div class="price-item">
                 <div class="price-title"><i class="fas fa-soap"></i> химчистка</div>
                 <div class="price-amount">150 ₽<small>/м²</small></div>
                 <ul class="price-feature-list">
                     <li><i class="fas fa-check-circle"></i> мягкая мебель</li>
-                    <li><i class="fas fa-check-circle"></i> ковры, паласы</li>
+                    <li><i class="fas fa-check-circle"></i> ковры</li>
                 </ul>
-                <a href="#contacts" class="btn btn-outline-slate" style="width:100%;"><i class="fas fa-calendar-alt"></i> заказать</a>
+                <a href="#contacts" class="btn btn-outline-slate" style="width:100%;">заказ</a>
             </div>
         </div>
-        <p style="text-align: center; margin-top: 40px;"><i class="fas fa-info-circle"></i> * Итоговая стоимость зависит от объёма и этажа. Работаем по безналу, без задержек.</p>
     </div>
 </section>
 
-<!-- ОЗОНИРОВАНИЕ -->
 <section>
     <div class="container ozone-wrap">
         <div>
-            <span class="hero-badge" style="background: var(--slate); color:white;"><i class="fas fa-wind"></i> фишка для новостройки</span>
+            <span class="hero-badge" style="background: var(--slate); color:white;"><i class="fas fa-wind"></i> фишка новостройки</span>
             <h2 style="color:#1F2E3A;">озонирование — убирает «запах новой квартиры»</h2>
-            <p><i class="fas fa-flask"></i> Летучие соединения от красок, клея, герметиков — частая причина недовольства. Озон нейтрализует запахи и бактерий, распадаясь на кислород.</p>
-            <ul class="b2b-list" style="margin-top:20px;">
-                <li><i class="fas fa-shield-alt"></i> безопасно для людей и отделки</li>
-                <li><i class="fas fa-clock"></i> помещение готово через 2 часа</li>
+            <p><i class="fas fa-flask"></i> Нейтрализует запахи красок, клея, бактерий.</p>
+            <ul class="b2b-list">
+                <li><i class="fas fa-shield-alt"></i> безопасно</li>
+                <li><i class="fas fa-clock"></i> готово через 2 часа</li>
             </ul>
-            <a href="#contacts" class="btn btn-outline-slate" style="margin-top:20px;"><i class="fas fa-cloud-sun"></i> добавить озонирование в проект</a>
+            <a href="#contacts" class="btn btn-outline-slate"><i class="fas fa-cloud-sun"></i> добавить</a>
         </div>
-        <div style="background: url('https://images.unsplash.com/photo-1584622050111-993a426fbf0a?w=800&auto=format&fit=crop') center/cover; border-radius: 60px; height: 300px;"></div>
+        <div style="background: url('https://images.unsplash.com/photo-1584622050111-993a426fbf0a?w=800&auto=format&fit=crop') center/cover; border-radius: 60px; height: 250px;"></div>
     </div>
 </section>
 
-<!-- ПОДАРОК -->
 <section class="bonus-area">
-    <h2><i class="fas fa-gift" style="margin-right: 15px;"></i> бесплатный инструмент для ваших менеджеров</h2>
+    <h2><i class="fas fa-gift"></i> подарок для ваших менеджеров</h2>
     <div class="bonus-highlight">скидка 15%</div>
-    <p style="color: #e9eef3; font-size: 1.5rem;">для каждого покупателя вашей квартиры</p>
-    <p style="max-width: 700px; margin: 30px auto;"><i class="fas fa-comment"></i> Мы дарим вашим клиентам сертификат на первую уборку или химчистку. Вы получаете дополнительный аргумент «Почему стоит купить именно у нас».</p>
-    <a href="#contacts" class="btn" style="background: var(--gold); color: var(--slate);"><i class="fas fa-certificate"></i> запросить макеты сертификатов</a>
+    <p style="font-size: 1.4rem;">каждому покупателю вашей квартиры</p>
+    <p><i class="fas fa-comment"></i> Сертификат на первую уборку — аргумент для продаж.</p>
+    <a href="#contacts" class="btn" style="background: var(--gold); color: var(--slate);"><i class="fas fa-certificate"></i> макеты</a>
 </section>
 
 <footer id="contacts">
     <div class="container">
         <div class="footer-inner">
             <div>
-                <h3><i class="fas fa-hard-hat"></i> МАРАФЕТ для застройщиков</h3>
-                <p>Работаем с девелоперами, подрядчиками и УК. Барнаул / Новоалтайск.</p>
+                <h3><i class="fas fa-hard-hat"></i> МАРАФЕТ застройщикам</h3>
+                <p>Барнаул / Новоалтайск</p>
                 <div class="address-box">
                     <i class="fas fa-map-marker-alt"></i> ул. Никитина, 146-1<br>
                     <i class="fas fa-clock"></i> пн-вс 08:00–22:00
                 </div>
             </div>
             <div>
-                <h3><i class="fas fa-user-tie"></i> персональный менеджер</h3>
+                <h3><i class="fas fa-user-tie"></i> менеджер</h3>
                 <p><i class="fas fa-phone-alt"></i> <a href="tel:+79635217532">+7 (963) 521-75-32</a><br>
-                <i class="fab fa-whatsapp"></i> <a href="https://wa.me/79635217532">WhatsApp (круглосуточно)</a><br>
+                <i class="fab fa-whatsapp"></i> <a href="https://wa.me/79635217532">WhatsApp 24/7</a><br>
                 <i class="fas fa-envelope"></i> <a href="mailto:b2b@marafet22.ru">b2b@marafet22.ru</a></p>
             </div>
             <div>
-                <h3><i class="fas fa-pen"></i> напишите нам — пришлём КП под ваш ЖК</h3>
-                <a href="https://wa.me/79635217532" class="btn btn-soft" style="margin-bottom: 10px;"><i class="fab fa-whatsapp"></i> WhatsApp</a><br>
-                <a href="tel:+79635217532" class="btn btn-outline-slate"><i class="fas fa-phone-alt"></i> позвонить сейчас</a>
+                <h3><i class="fas fa-pen"></i> КП под ваш ЖК</h3>
+                <a href="https://wa.me/79635217532" class="btn btn-soft" style="margin-bottom: 10px; width:100%;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="tel:+79635217532" class="btn btn-outline-slate" style="width:100%;"><i class="fas fa-phone-alt"></i> позвонить</a>
             </div>
         </div>
         <div class="copyright">
-            <i class="far fa-copyright"></i> 2020–2026 МАРАФЕТ · предложение для застройщиков · данные актуальны на 2026 г.
+            <i class="far fa-copyright"></i> 2020–2026 МАРАФЕТ · данные актуальны
         </div>
     </div>
 </footer>
 
-<!-- Дополнительная проверка иконок (текст на случай отказа CDN) -->
-<noscript>
-    <div style="background: #ffdddd; padding: 10px; text-align: center;">Для отображения иконок включите JavaScript или обновите страницу.</div>
-</noscript>
 </body>
 </html>
