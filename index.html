@@ -14,7 +14,7 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #FFFFFF;  /* чистый белый фон */
+            background: #FFFFFF;  /* строго белый фон */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -22,27 +22,24 @@
             padding: 2rem;
         }
 
-        /* основной контейнер презентации — максимальная ширина для ТВ/экрана */
+        /* презентация — максимальная ширина для ТВ/экрана, без теней и лишнего */
         .presentation {
             max-width: 1280px;
             width: 100%;
             background: #FFFFFF;
-            border-radius: 0;    /* строго без излишеств */
-            box-shadow: none;
         }
 
-        /* внутренние отступы только для воздуха */
         .content {
             padding: 1rem 0.5rem;
         }
 
-        /* верхняя панель: логотип + QR, просто и аккуратно */
+        /* верхняя панель: логотип и крупные QR-коды */
         .top-row {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            gap: 1.5rem;
+            gap: 2rem;
             margin-bottom: 2rem;
             padding-bottom: 1rem;
             border-bottom: 1px solid #E6E6E6;
@@ -56,53 +53,62 @@
         }
 
         .logo {
-            height: 64px;
+            height: 70px;
             width: auto;
-            max-width: 200px;
+            max-width: 220px;
             object-fit: contain;
             background: #FFFFFF;
         }
 
         .company-name {
-            font-size: 1.6rem;
+            font-size: 1.7rem;
             font-weight: 700;
             color: #1A1A1A;
             letter-spacing: -0.3px;
         }
 
         .company-tag {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #4D4D4D;
             margin-top: 0.2rem;
         }
 
+        /* КРУПНЫЕ QR-КОДЫ — главное требование */
         .qr-wrapper {
             display: flex;
-            gap: 1rem;
+            gap: 2rem;
             align-items: center;
         }
 
         .qr-item {
             text-align: center;
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: #333;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1F1F1F;
         }
 
         .qr-img {
-            width: 52px;
-            height: 52px;
+            width: 110px;        /* крупный размер для ТВ */
+            height: 110px;
             object-fit: contain;
             background: #FFFFFF;
-            border: 1px solid #EAEAEA;
-            border-radius: 8px;
-            padding: 4px;
+            border: 1px solid #DCDCDC;
+            border-radius: 16px;
+            padding: 8px;
+            margin-bottom: 0.5rem;
+            transition: transform 0.1s ease;
+        }
+
+        /* небольшой ховер для наглядности */
+        .qr-img:hover {
+            transform: scale(1.02);
+            border-color: #B0B0B0;
         }
 
         /* заголовок и описание компании */
         .hero {
             text-align: center;
-            margin: 2rem 0 1.5rem;
+            margin: 2rem 0 1.8rem;
         }
 
         .hero h1 {
@@ -118,7 +124,7 @@
             color: #3A3A3A;
             max-width: 700px;
             margin: 0 auto;
-            line-height: 1.4;
+            line-height: 1.45;
         }
 
         /* раздел услуг — четкая сетка */
@@ -146,7 +152,6 @@
             border: 1px solid #EDEDED;
             border-radius: 16px;
             padding: 1.4rem 1.2rem;
-            transition: all 0.1s ease;
         }
 
         .service-icon {
@@ -197,7 +202,7 @@
             border: 1px solid #E2E2E2;
         }
 
-        /* контакты: телефон и сайт */
+        /* контакты: телефон и сайт (с дополнительными крупными QR внизу для акцента) */
         .contact-block {
             background: #F8F8F8;
             border-radius: 20px;
@@ -229,28 +234,45 @@
             border-bottom-color: #C5662C;
         }
 
-        .footer-qr-small {
+        /* нижняя часть с крупными QR (дублируем, чтобы были на виду) */
+        .footer-qr-large {
             display: flex;
-            gap: 0.8rem;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0 1.5rem;
+            flex-wrap: wrap;
+            border-top: 1px solid #EFEFEF;
+            padding-top: 2rem;
         }
 
-        .small-qr-img {
-            width: 44px;
-            height: 44px;
+        .footer-qr-item {
+            text-align: center;
+        }
+
+        .footer-qr-img {
+            width: 130px;
+            height: 130px;
             object-fit: contain;
             background: white;
-            border-radius: 8px;
-            border: 1px solid #E0E0E0;
-            padding: 3px;
+            border: 1px solid #DCDCDC;
+            border-radius: 20px;
+            padding: 10px;
+            margin-bottom: 0.6rem;
         }
 
-        /* нижняя часть — преимущества компании */
+        .footer-qr-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #2B2B2B;
+        }
+
+        /* преимущества компании */
         .footer-features {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
             padding-top: 1rem;
             border-top: 1px solid #EEEEEE;
             font-size: 0.8rem;
@@ -263,7 +285,7 @@
             gap: 1.2rem;
         }
 
-        /* простая адаптация */
+        /* адаптация: на планшетах и телефонах QR остаются достаточно крупными */
         @media (max-width: 750px) {
             body {
                 padding: 1rem;
@@ -273,6 +295,17 @@
             }
             .phone {
                 font-size: 1.3rem;
+            }
+            .qr-img {
+                width: 80px;
+                height: 80px;
+            }
+            .footer-qr-img {
+                width: 100px;
+                height: 100px;
+            }
+            .qr-wrapper {
+                gap: 1rem;
             }
             .contact-block {
                 flex-direction: column;
@@ -284,22 +317,28 @@
             }
         }
 
-        /* никаких теней и лишних украшений */
-        a {
-            text-decoration: none;
+        @media (max-width: 480px) {
+            .qr-img {
+                width: 70px;
+                height: 70px;
+            }
+            .footer-qr-img {
+                width: 85px;
+                height: 85px;
+            }
         }
     </style>
 </head>
 <body>
 <div class="presentation">
     <div class="content">
-        <!-- Логотип + QR (мессенджер MAX и сайт) -->
+        <!-- Верхняя строка: логотип + КРУПНЫЕ QR коды (мессенджер MAX и сайт) -->
         <div class="top-row">
             <div class="logo-area">
                 <img class="logo" 
                      src="https://github.com/diz-max/marafet/blob/bf349440b083f1cb4bf3217e13a7b705dcf23996/images/logo_new.png?raw=true" 
                      alt="Марафет логотип"
-                     onerror="this.onerror=null; this.src='https://placehold.co/200x64?text=MARAFET';">
+                     onerror="this.onerror=null; this.src='https://placehold.co/200x70?text=MARAFET';">
                 <div>
                     <div class="company-name">МАРАФЕТ</div>
                     <div class="company-tag">клининговая компания</div>
@@ -309,21 +348,21 @@
                 <div class="qr-item">
                     <img class="qr-img" 
                          src="https://github.com/diz-max/marafet/blob/bf349440b083f1cb4bf3217e13a7b705dcf23996/images/qr_max.png?raw=true" 
-                         alt="Мессенджер MAX"
-                         onerror="this.src='https://placehold.co/52x52?text=MAX'">
-                    <div>мессенджер MAX</div>
+                         alt="Мессенджер MAX QR"
+                         onerror="this.src='https://placehold.co/110x110?text=MAX'">
+                    <div>📱 мессенджер MAX</div>
                 </div>
                 <div class="qr-item">
                     <img class="qr-img" 
                          src="https://github.com/diz-max/marafet/blob/bf349440b083f1cb4bf3217e13a7b705dcf23996/images/qr.png?raw=true" 
-                         alt="Сайт"
-                         onerror="this.src='https://placehold.co/52x52?text=SITE'">
-                    <div>Наш сайт</div>
+                         alt="Сайт QR"
+                         onerror="this.src='https://placehold.co/110x110?text=SITE'">
+                    <div>🌐 наш сайт</div>
                 </div>
             </div>
         </div>
 
-        <!-- О компании — просто и понятно -->
+        <!-- О компании — кратко и информативно -->
         <div class="hero">
             <h1>Чистота, которой доверяют</h1>
             <p>Профессиональный клининг в Барнауле для дома и бизнеса.<br>Безупречный результат без лишних хлопот.</p>
@@ -368,13 +407,32 @@
             </div>
         </div>
 
-        <!-- Контакты компании (без сертификатов) -->
+        <!-- Контакты компании (телефон, сайт) -->
         <div class="contact-block">
             <div class="phone">+7(963) 521 75 32</div>
             <a href="https://marafet22.ru/" target="_blank" class="website">marafet22.ru</a>
-            <div class="footer-qr-small">
-                <img class="small-qr-img" src="https://github.com/diz-max/marafet/blob/bf349440b083f1cb4bf3217e13a7b705dcf23996/images/qr_max.png?raw=true" alt="MAX QR">
-                <img class="small-qr-img" src="https://github.com/diz-max/marafet/blob/bf349440b083f1cb4bf3217e13a7b705dcf23996/images/qr.png?raw=true" alt="Site QR">
+            <!-- небольшая пара QR для удобства в контактной зоне, но основной акцент ниже -->
+            <div style="display: flex; gap: 0.8rem;">
+                <img src="https://github.com/diz-max/marafet/blob/bf349440b083f1cb4bf3217e13a7b705dcf23996/images/qr_max.png?raw=true" alt="MAX" style="width: 42px; height:42px; border-radius:8px; border:1px solid #ddd; padding:3px;">
+                <img src="https://github.com/diz-max/marafet/blob/bf349440b083f1cb4bf3217e13a7b705dcf23996/images/qr.png?raw=true" alt="site" style="width: 42px; height:42px; border-radius:8px; border:1px solid #ddd; padding:3px;">
+            </div>
+        </div>
+
+        <!-- КРУПНЫЕ QR КОДЫ — главная секция, чтобы были отлично видны на ТВ -->
+        <div class="footer-qr-large">
+            <div class="footer-qr-item">
+                <img class="footer-qr-img" 
+                     src="https://github.com/diz-max/marafet/blob/bf349440b083f1cb4bf3217e13a7b705dcf23996/images/qr_max.png?raw=true" 
+                     alt="Мессенджер MAX крупно"
+                     onerror="this.src='https://placehold.co/130x130?text=MAX'">
+                <div class="footer-qr-label">📲 Мессенджер MAX</div>
+            </div>
+            <div class="footer-qr-item">
+                <img class="footer-qr-img" 
+                     src="https://github.com/diz-max/marafet/blob/bf349440b083f1cb4bf3217e13a7b705dcf23996/images/qr.png?raw=true" 
+                     alt="Сайт компании крупно"
+                     onerror="this.src='https://placehold.co/130x130?text=SITE'">
+                <div class="footer-qr-label">🌍 Официальный сайт</div>
             </div>
         </div>
 
@@ -384,8 +442,9 @@
                 <span>✓ Современное оборудование</span>
                 <span>✓ Безопасные средства</span>
                 <span>✓ Индивидуальный подход</span>
+                <span>✓ Работаем в Барнауле</span>
             </div>
-            <div>Марафет — чистота с заботой</div>
+            <div>Марафет — безупречная чистота</div>
         </div>
     </div>
 </div>
