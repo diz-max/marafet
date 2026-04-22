@@ -2,10 +2,9 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Марафет | Клининговая компания | Презентация</title>
-    <!-- Google Fonts & smooth styles -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Марафет | Презентация клининговой компании</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,32 +14,32 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: #0B2B2B;  /* deep elegant dark teal background for contrast */
+            background: #F5F0E8;  /* мягкий светлый фон как холст */
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 2rem 1rem;
+            min-height: 100vh;
+            padding: 2rem;
         }
 
-        /* presentation screen wrapper – mimics a large display / kiosk */
-        .presentation-container {
+        /* экран презентации — стиль под телевизор / киоск */
+        .presentation-screen {
             max-width: 1400px;
             width: 100%;
-            background: #FEF9F0;   /* warm off-white paper-like background */
-            border-radius: 2rem;
-            box-shadow: 0 25px 45px -12px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,215,150,0.3);
+            background: #FFFFFF;
+            border-radius: 2.5rem;
+            box-shadow: 0 30px 50px -20px rgba(0,0,0,0.25), 0 0 0 1px rgba(230,210,170,0.5);
             overflow: hidden;
             transition: all 0.2s;
         }
 
-        /* main slide area */
-        .slides-area {
-            padding: 2.5rem 2rem 2rem 2rem;
+        /* основной контент с отступами */
+        .slide-content {
+            padding: 2.8rem 2.5rem 2.5rem 2.5rem;
         }
 
-        /* header with logo and company branding */
-        .hero-header {
+        /* Верхняя панель: логотип + QR коды */
+        .top-bar {
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -48,446 +47,420 @@
             gap: 1.5rem;
             margin-bottom: 2rem;
             padding-bottom: 1rem;
-            border-bottom: 2px solid #FFE0A3;
+            border-bottom: 2px solid #FFE5C4;
         }
 
-        .logo-block {
+        .logo-area {
             display: flex;
             align-items: center;
             gap: 1rem;
             flex-wrap: wrap;
         }
 
-        .logo-img {
-            height: 70px;
+        .logo-image {
+            height: 75px;
             width: auto;
-            max-width: 200px;
+            max-width: 220px;
             object-fit: contain;
             background: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-
-        .company-name {
-            font-size: 1.9rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #C67B2E, #9B4B1A);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: -0.3px;
-        }
-
-        .tagline {
-            font-size: 0.9rem;
-            color: #5C3E1F;
-            font-weight: 500;
-            margin-top: 0.2rem;
-        }
-
-        .qr-header {
-            display: flex;
-            gap: 1.2rem;
-            background: #FFF6EA;
-            padding: 0.6rem 1.2rem;
-            border-radius: 60px;
-            align-items: center;
-        }
-
-        .qr-item {
-            text-align: center;
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: #7B4A2A;
-        }
-
-        .qr-code-img {
-            width: 55px;
-            height: 55px;
-            object-fit: contain;
-            background: white;
-            border-radius: 12px;
-            padding: 4px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-radius: 24px;
+            padding: 6px 14px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.03);
             transition: transform 0.2s;
         }
 
-        .qr-code-img:hover {
+        .brand-text h2 {
+            font-size: 1.9rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(125deg, #C4712C, #9B4E1A);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .brand-text p {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #A07D56;
+        }
+
+        .qr-pack {
+            display: flex;
+            gap: 1.2rem;
+            background: #FEFAF5;
+            padding: 0.5rem 1.4rem;
+            border-radius: 80px;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .qr-single {
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #754E28;
+        }
+
+        .qr-img {
+            width: 58px;
+            height: 58px;
+            object-fit: contain;
+            background: white;
+            border-radius: 16px;
+            padding: 5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .qr-img:hover {
             transform: scale(1.02);
         }
 
-        /* main title */
-        .event-title {
+        /* главный заголовок — вдохновляющий */
+        .main-headline {
             text-align: center;
-            margin: 2rem 0 1.5rem;
+            margin: 2rem 0 1.2rem;
         }
 
-        .event-badge {
-            background: #E8D9C4;
+        .pre-title {
+            background: #F2E5D8;
             display: inline-block;
-            padding: 0.3rem 1.8rem;
+            padding: 0.25rem 1.5rem;
             border-radius: 40px;
-            font-weight: 700;
+            font-weight: 600;
             font-size: 0.85rem;
             letter-spacing: 1px;
-            color: #5C3E1F;
+            color: #AD784B;
             margin-bottom: 1rem;
         }
 
         h1 {
-            font-size: 2.8rem;
+            font-size: 3.5rem;
             font-weight: 800;
-            color: #2C2B26;
             line-height: 1.2;
+            color: #2C2822;
         }
 
         h1 span {
-            background: linear-gradient(120deg, #C6792C, #E5A23C);
+            background: linear-gradient(130deg, #CF7D34, #B45F29);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
         }
 
-        .sub {
-            font-size: 1.1rem;
-            color: #5F4C38;
-            margin-top: 0.5rem;
+        .subhead {
+            font-size: 1.2rem;
+            color: #6E5238;
+            margin-top: 0.8rem;
+            font-weight: 400;
         }
 
-        /* services grid */
+        /* СЕТКА УСЛУГ — главный акцент (полная информация об услугах) */
+        .services-showcase {
+            margin: 2.8rem 0 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #422F1E;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .section-title:before {
+            content: "✨";
+            font-size: 2rem;
+        }
+
         .services-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0 2rem;
-            background: #FFFBF5;
-            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 1.6rem;
+        }
+
+        .service-card {
+            background: #FEFCF9;
             border-radius: 2rem;
+            padding: 1.5rem 1.2rem;
+            transition: all 0.25s ease;
+            border: 1px solid #FFEAD6;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02);
         }
 
-        .service-chip {
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #F5CDA0;
+            box-shadow: 0 20px 30px -12px rgba(160, 100, 40, 0.12);
             background: white;
-            border-radius: 60px;
-            padding: 0.6rem 1.4rem;
-            font-weight: 600;
-            font-size: 0.9rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-            border: 1px solid #FFE2B5;
-            color: #3E2A1A;
-            transition: all 0.2s;
         }
 
-        .service-chip:before {
-            content: "✦ ";
-            color: #D9892E;
-            font-weight: 800;
-        }
-
-        /* certificates showcase — main visual */
-        .certificates-showcase {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.8rem;
-            justify-content: center;
-            margin: 2.5rem 0 2rem;
-        }
-
-        .cert-card {
-            background: linear-gradient(145deg, #FFFFFF, #FFF9F0);
-            border-radius: 32px;
-            width: 260px;
-            padding: 1.2rem 0.8rem 1rem;
-            text-align: center;
-            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.15);
-            transition: transform 0.25s ease;
-            border: 1px solid #FCE5C1;
-        }
-
-        .cert-card:hover {
-            transform: translateY(-6px);
-        }
-
-        .cert-place {
-            background: #F3E1CA;
-            display: inline-block;
-            padding: 0.2rem 1rem;
-            border-radius: 50px;
-            font-weight: 800;
-            font-size: 0.8rem;
-            color: #875A2C;
+        .service-icon {
+            font-size: 2.2rem;
             margin-bottom: 0.8rem;
         }
 
-        .cert-nom {
-            font-size: 1.9rem;
-            font-weight: 800;
-            color: #C56C2A;
-            margin: 0.5rem 0;
-        }
-
-        .cert-rub {
-            font-size: 1rem;
-            font-weight: 600;
-        }
-
-        .cert-title {
+        .service-title {
+            font-size: 1.3rem;
             font-weight: 700;
-            font-size: 1rem;
-            margin-top: 0.5rem;
-            border-top: 1px dashed #FFD9A3;
-            padding-top: 0.7rem;
-            color: #4E3822;
+            color: #C0652A;
+            margin-bottom: 0.6rem;
         }
 
-        .special-organizer {
-            background: linear-gradient(135deg, #FFF2E2, #FFEAD6);
-            border: 2px solid #E5B46B;
+        .service-desc {
+            font-size: 0.9rem;
+            color: #5F4A32;
+            line-height: 1.4;
+            font-weight: 500;
         }
 
-        /* contact + qr row */
-        .contact-row {
+        /* Специальный блок дополнительных опций (окна, фасады, вывески) */
+        .extra-services {
+            margin-top: 2rem;
+            background: #FFF9F2;
+            border-radius: 2rem;
+            padding: 1.5rem 1.8rem;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            background: #2E241E;
-            border-radius: 28px;
-            margin-top: 2rem;
-            padding: 1.2rem 2rem;
-            color: #FCF3E6;
-        }
-
-        .phone-info {
-            display: flex;
             gap: 1rem;
-            align-items: baseline;
-            flex-wrap: wrap;
         }
 
-        .phone-number {
-            font-size: 1.7rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            background: #F9E0BD;
-            padding: 0.2rem 1rem;
-            border-radius: 40px;
-            color: #2C1A0C;
-        }
-
-        .website {
-            font-size: 1rem;
-            font-weight: 500;
-            text-decoration: underline;
-            color: #FFD89C;
-        }
-
-        .valid-date {
+        .extra-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: white;
+            border-radius: 60px;
+            padding: 0.5rem 1.2rem;
             font-weight: 600;
-            background: #3C2D22;
-            padding: 0.4rem 1rem;
+            font-size: 0.9rem;
+            color: #845A32;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+            border: 1px solid #F7E1C4;
+        }
+
+        /* контактная зона с телефоном, сайтом, сроком */
+        .contact-block {
+            background: #2C241E;
+            border-radius: 2rem;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0 1.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            color: #FEF0E2;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            align-items: baseline;
+        }
+
+        .phone-big {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: #F6E0C6;
+            padding: 0.2rem 1rem;
+            border-radius: 60px;
+            color: #2C1A0A;
+            letter-spacing: 1px;
+        }
+
+        .website-link {
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 2px solid #CF9F6E;
+            color: #FFE3C2;
+        }
+
+        .validity {
+            background: #3F2E21;
+            padding: 0.5rem 1.2rem;
             border-radius: 60px;
             font-size: 0.9rem;
+            font-weight: 500;
         }
 
-        .footer-qr {
+        .footer-qr-row {
             display: flex;
-            gap: 1rem;
+            gap: 0.8rem;
             align-items: center;
         }
 
-        .footer-qr-item {
-            text-align: center;
-            font-size: 0.7rem;
-        }
-
-        .footer-qr-img {
-            width: 50px;
-            height: 50px;
+        .mini-qr {
+            width: 48px;
+            height: 48px;
             background: white;
             border-radius: 14px;
             padding: 4px;
         }
 
-        hr {
-            margin: 1rem 0;
-            border-color: #F0DDC0;
+        /* подвал */
+        .bottom-note {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            color: #B59270;
+            border-top: 1px solid #F0E0CE;
+            padding-top: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
         }
 
-        /* responsive */
+        /* адаптивность */
         @media (max-width: 800px) {
-            .slides-area {
-                padding: 1.5rem;
+            .slide-content {
+                padding: 1.8rem;
             }
             h1 {
-                font-size: 2rem;
+                font-size: 2.4rem;
             }
-            .phone-number {
-                font-size: 1.2rem;
+            .phone-big {
+                font-size: 1.3rem;
             }
-            .contact-row {
-                flex-direction: column;
-                gap: 1rem;
-                align-items: flex-start;
+            .services-grid {
+                grid-template-columns: 1fr;
             }
-            .cert-card {
-                width: 220px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .hero-header {
+            .top-bar {
                 flex-direction: column;
                 align-items: flex-start;
             }
-            .qr-header {
-                align-self: flex-start;
+        }
+
+        @media (max-width: 550px) {
+            .contact-block {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .extra-services {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
 
-        .button-glow {
+        .clean-badge {
+            background: #EADDCB;
+            border-radius: 30px;
+            padding: 0.3rem 1rem;
+            font-size: 0.7rem;
             font-weight: 600;
-        }
-
-        .marafet-sign {
-            text-align: right;
-            margin-top: 1rem;
-            font-style: italic;
-            font-size: 0.8rem;
-            color: #B69272;
+            color: #5C3E23;
         }
     </style>
 </head>
 <body>
-<div class="presentation-container">
-    <div class="slides-area">
-        <!-- HEADER with logo + QR (messenger & site) -->
-        <div class="hero-header">
-            <div class="logo-block">
-                <img class="logo-img" src="https://github.com/diz-max/marafet/blob/bf349440b083f1cb4bf3217e13a7b705dcf23996/images/logo_new.png?raw=true" 
-                     alt="Марафет логотип" 
-                     onerror="this.onerror=null; this.src='https://via.placeholder.com/200x70?text=MARAFET';">
-                <div>
-                    <div class="company-name">МАРАФЕТ</div>
-                    <div class="tagline">чистота с безупречным стилем</div>
+<div class="presentation-screen">
+    <div class="slide-content">
+        <!-- Верхняя часть: логотип и QR (мессенджер MAX + сайт) -->
+        <div class="top-bar">
+            <div class="logo-area">
+                <img class="logo-image" 
+                     src="https://github.com/diz-max/marafet/blob/bf349440b083f1cb4bf3217e13a7b705dcf23996/images/logo_new.png?raw=true" 
+                     alt="Марафет логотип"
+                     onerror="this.onerror=null; this.src='https://placehold.co/200x70?text=MARAFET';">
+                <div class="brand-text">
+                    <h2>МАРАФЕТ</h2>
+                    <p>чистота высшего класса</p>
                 </div>
             </div>
-            <div class="qr-header">
-                <div class="qr-item">
-                    <img class="qr-code-img" src="https://github.com/diz-max/marafet/blob/bf349440b083f1cb4bf3217e13a7b705dcf23996/images/qr_max.png?raw=true" 
+            <div class="qr-pack">
+                <div class="qr-single">
+                    <img class="qr-img" 
+                         src="https://github.com/diz-max/marafet/blob/bf349440b083f1cb4bf3217e13a7b705dcf23996/images/qr_max.png?raw=true" 
                          alt="QR мессенджер MAX"
-                         onerror="this.src='https://placehold.co/55x55?text=MAX'">
+                         onerror="this.src='https://placehold.co/58x58?text=MAX'">
                     <div>мессенджер MAX</div>
                 </div>
-                <div class="qr-item">
-                    <img class="qr-code-img" src="https://github.com/diz-max/marafet/blob/bf349440b083f1cb4bf3217e13a7b705dcf23996/images/qr.png?raw=true" 
+                <div class="qr-single">
+                    <img class="qr-img" 
+                         src="https://github.com/diz-max/marafet/blob/bf349440b083f1cb4bf3217e13a7b705dcf23996/images/qr.png?raw=true" 
                          alt="QR сайт"
-                         onerror="this.src='https://placehold.co/55x55?text=SITE'">
+                         onerror="this.src='https://placehold.co/58x58?text=SITE'">
                     <div>Наш сайт</div>
                 </div>
             </div>
         </div>
 
-        <!-- Event presentation info -->
-        <div class="event-title">
-            <div class="event-badge">✨ партнер конкурса красоты и грации ✨</div>
-            <h1>«МИССИС <span>БАРНАУЛА 2026</span>»</h1>
-            <div class="sub">Подарочные сертификаты на клининговые услуги для победительниц и организатора</div>
+        <!-- Заголовок презентации: чистый, светлый, профессиональный -->
+        <div class="main-headline">
+            <div class="pre-title">ПРОФЕССИОНАЛЬНЫЙ КЛИНИНГ В БАРНАУЛЕ</div>
+            <h1>Идеальная чистота <span>для вашего</span> дома и бизнеса</h1>
+            <div class="subhead">Команда «Марафет» создает безупречный порядок, чтобы вы наслаждались комфортом</div>
         </div>
 
-        <!-- SERVICES section (premium cleaning list) -->
-        <div class="services-grid">
-            <div class="service-chip">ГЕНЕРАЛЬНАЯ УБОРКА КВАРТИР/ДОМОВ</div>
-            <div class="service-chip">ПОСЛЕСТРОИТЕЛЬНАЯ УБОРКА</div>
-            <div class="service-chip">ПОДДЕРЖИВАЮЩАЯ УБОРКА</div>
-            <div class="service-chip">УБОРКА ПРОИЗВОДСТВЕННЫХ ПОМЕЩЕНИЙ</div>
-            <div class="service-chip">МОЙКА ОКОН, ВИТРАЖЕЙ, ФАСАДОВ, ВЫВЕСОК</div>
-        </div>
-
-        <!-- CERTIFICATES CARDS (exactly from PDF: 1st, 2nd, 3rd, 1000р participant, and organizer 5000р) -->
-        <div class="certificates-showcase">
-            <!-- 1 место - 5000р -->
-            <div class="cert-card">
-                <div class="cert-place">🥇 1 МЕСТО</div>
-                <div class="cert-nom">5 000 ₽</div>
-                <div class="cert-title">УЧАСТНИЦЕ КОНКУРСА<br>«МИССИС БАРНАУЛА 2026»</div>
-                <div style="font-size: 0.7rem; margin-top: 10px; color:#B87C48;">сертификат на клининг</div>
-                <div style="font-size: 0.7rem; font-weight: 500; margin-top: 8px;">⭐ генеральная уборка ⭐</div>
-            </div>
-            <!-- 2 место - 3000р -->
-            <div class="cert-card">
-                <div class="cert-place">🥈 2 МЕСТО</div>
-                <div class="cert-nom">3 000 ₽</div>
-                <div class="cert-title">УЧАСТНИЦЕ КОНКУРСА<br>«МИССИС БАРНАУЛА 2026»</div>
-                <div style="font-size: 0.7rem; margin-top: 10px; color:#B87C48;">идеальный порядок в подарок</div>
-            </div>
-            <!-- 3 место - 2000р -->
-            <div class="cert-card">
-                <div class="cert-place">🥉 3 МЕСТО</div>
-                <div class="cert-nom">2 000 ₽</div>
-                <div class="cert-title">УЧАСТНИЦЕ КОНКУРСА<br>«МИССИС БАРНАУЛА 2026»</div>
-                <div style="font-size: 0.7rem; margin-top: 8px;">✨ поддерживающая уборка ✨</div>
-            </div>
-            <!-- Участнице номинал 1000р (4 страница) -->
-            <div class="cert-card">
-                <div class="cert-place">🎀 СПЕЦИАЛЬНЫЙ</div>
-                <div class="cert-nom">1 000 ₽</div>
-                <div class="cert-title">УЧАСТНИЦЕ КОНКУРСА КРАСОТЫ И ГРАЦИИ<br>«МИССИС БАРНАУЛА 2026»</div>
-                <div style="font-size: 0.7rem; margin-top: 6px;">подарочный сертификат</div>
-            </div>
-            <!-- ОРГАНИЗАТОРУ номинал 5000р (особый) -->
-            <div class="cert-card special-organizer">
-                <div class="cert-place">🏆 ОРГАНИЗАТОРУ</div>
-                <div class="cert-nom">5 000 ₽</div>
-                <div class="cert-title">ОРГАНИЗАТОРУ КОНКУРСА КРАСОТЫ И ГРАЦИИ<br>«МИССИС БАРНАУЛА 2026»</div>
-                <div style="font-size: 0.7rem; font-weight: 600; margin-top: 8px;">премиум-клининг в подарок</div>
-            </div>
-        </div>
-
-        <!-- Additional info from PDF: contact, validity, plus QR integrated again -->
-        <div class="contact-row">
-            <div class="phone-info">
-                <div class="phone-number">+7(963) 521 75 32</div>
-                <a href="https://marafet22.ru/" target="_blank" class="website">marafet22.ru</a>
-            </div>
-            <div class="valid-date">
-                🗓️ Срок действия сертификатов: до <strong>31.05.2026</strong>
-            </div>
-            <div class="footer-qr">
-                <div class="footer-qr-item">
-                    <img class="footer-qr-img" src="https://github.com/diz-max/marafet/blob/bf349440b083f1cb4bf3217e13a7b705dcf23996/images/qr_max.png?raw=true" 
-                         alt="QR MAX" onerror="this.src='https://placehold.co/50x50'">
-                    <div>MAX</div>
+        <!-- БЛОК УСЛУГ: полная информация из описания (все виды уборки) -->
+        <div class="services-showcase">
+            <div class="section-title">Наши услуги</div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏠✨</div>
+                    <div class="service-title">Генеральная уборка</div>
+                    <div class="service-desc">Квартир, домов и коттеджей. Полное избавление от пыли, загрязнений, наведение безупречного порядка.</div>
                 </div>
-                <div class="footer-qr-item">
-                    <img class="footer-qr-img" src="https://github.com/diz-max/marafet/blob/bf349440b083f1cb4bf3217e13a7b705dcf23996/images/qr.png?raw=true" 
-                         alt="QR сайт" onerror="this.src='https://placehold.co/50x50'">
-                    <div>Сайт</div>
+                <div class="service-card">
+                    <div class="service-icon">🏗️🧹</div>
+                    <div class="service-title">Послестроительная уборка</div>
+                    <div class="service-desc">Удаляем строительную пыль, остатки материалов. Ваш объект засияет чистотой после ремонта.</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔄🧽</div>
+                    <div class="service-title">Поддерживающая уборка</div>
+                    <div class="service-desc">Регулярная уборка на постоянной основе. Свежесть и порядок каждый день без хлопот.</div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏭🧼</div>
+                    <div class="service-title">Уборка производственных помещений</div>
+                    <div class="service-desc">Офисы, склады, цеха, ТЦ – поддерживаем чистоту на любых объектах бизнеса.</div>
                 </div>
             </div>
         </div>
 
-        <!-- Full service description + additional style -->
-        <hr>
-        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.8rem; align-items: center; margin-top: 0.5rem;">
-            <div style="font-size: 0.85rem; color:#8E6A44;">
-                🌟 Профессиональный клининг в Барнауле — качество, проверенное временем. 
-                Все виды уборки: от генеральной до мытья фасадов и витрин.
+        <!-- Дополнительный блок: мойка окон, витражей, фасадов, вывесок (согласно вашим данным) -->
+        <div class="extra-services">
+            <div class="extra-badge">🪟 Мойка окон & витражей</div>
+            <div class="extra-badge">🏢 Мойка фасадов зданий</div>
+            <div class="extra-badge">📢 Чистка вывесок и рекламных проспектов</div>
+            <div class="extra-badge">🧽 Химчистка мягкой мебели (по запросу)</div>
+        </div>
+
+        <!-- Контактная информация с телефоном, сайтом и сроком действия сертификатов (в контексте) -->
+        <div class="contact-block">
+            <div class="contact-details">
+                <div class="phone-big">+7(963) 521 75 32</div>
+                <a href="https://marafet22.ru/" target="_blank" class="website-link">marafet22.ru</a>
             </div>
-            <div class="marafet-sign">
-                Вольга Кравцова | Марафет
+            <div class="validity">
+                🗓️ Сертификаты действительны до 31.05.2026
+            </div>
+            <div class="footer-qr-row">
+                <div><img class="mini-qr" src="https://github.com/diz-max/marafet/blob/bf349440b083f1cb4bf3217e13a7b705dcf23996/images/qr_max.png?raw=true" alt="QR MAX"></div>
+                <div><img class="mini-qr" src="https://github.com/diz-max/marafet/blob/bf349440b083f1cb4bf3217e13a7b705dcf23996/images/qr.png?raw=true" alt="QR site"></div>
             </div>
         </div>
-        <div style="background:#FEF3E6; margin-top: 1.2rem; border-radius: 24px; padding: 0.8rem 1.2rem; text-align: center; font-size: 0.8rem;">
-            ⚡ Подарочный сертификат можно использовать на любой вид услуг: генеральная, послестроительная, поддерживающая уборка, 
-            мойка окон, витражей и фасадов. Действителен до 31 мая 2026.
+
+        <!-- Небольшая дополнительная информация об услугах + гарантия качества -->
+        <div class="bottom-note">
+            <div>⭐ Премиальное оборудование и безопасные средства ⭐</div>
+            <div>🧼 Индивидуальный подход к каждому объекту 🧼</div>
+            <div class="clean-badge">Чистота, которой доверяют</div>
+        </div>
+
+        <!-- Легкая линия с брендированием -->
+        <div style="margin-top: 1rem; text-align: right; font-size: 0.7rem; color: #C7AF8B;">
+            Марафет | клининговая компания
         </div>
     </div>
-    <!-- subtle footnote: presentation screen optimized -->
-</div>
-<div style="text-align: center; margin-top: 1.5rem; color: #CDB28C; font-size: 0.8rem;">
-    🧼 Марафет — безупречная чистота для вашего дома и бизнеса 🧼
 </div>
 </body>
 </html>
