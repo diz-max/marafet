@@ -2,834 +2,492 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>МАРАФЕТ | коммерческое предложение для застройщиков</title>
-    <!-- Google Fonts: Manrope — чистый, современный, отлично читается -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome 6 (стабильный) -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0-beta3/css/all.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Марафет | Клининговая компания | Презентация</title>
+    <!-- Google Fonts & smooth styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <style>
-        /* ===== СБРОС И ПЕРЕМЕННЫЕ ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            /* светлая, свежая палитра */
-            --bg: #F8FAFC;
-            --surface: #FFFFFF;
-            --primary: #1A2B3F;      /* глубокий синий */
-            --primary-light: #2C3E58;
-            --accent: #D4A373;        /* тёплый песочный */
-            --accent-light: #FAEDE4;
-            --gray-100: #F1F5F9;
-            --gray-300: #E2E8F0;
-            --gray-600: #64748B;
-            --text-dark: #0F172A;
-            --text-medium: #334155;
-            --shadow-sm: 0 10px 30px -10px rgba(0,0,0,0.05);
-            --shadow-md: 0 20px 40px -15px rgba(0,0,0,0.1);
-            --shadow-lg: 0 30px 60px -15px rgba(0,0,0,0.15);
-            --radius-sm: 20px;
-            --radius-md: 36px;
-            --radius-lg: 60px;
-            --container-padding: clamp(20px, 5vw, 60px);
-        }
-
         body {
-            font-family: 'Manrope', sans-serif;
-            background-color: var(--bg);
-            color: var(--text-dark);
-            line-height: 1.5;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1440px;
-            margin: 0 auto;
-            padding: 0 var(--container-padding);
-            width: 100%;
-        }
-
-        /* ===== ТИПОГРАФИЯ ===== */
-        h1, h2, h3, h4 {
-            font-weight: 700;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-        }
-
-        h1 {
-            font-size: clamp(2.4rem, 8vw, 5rem);
-            margin-bottom: 1.2rem;
-        }
-
-        h2 {
-            font-size: clamp(2rem, 6vw, 3.8rem);
-            margin-bottom: 2rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        h2:after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 0;
-            width: 90px;
-            height: 5px;
-            background: var(--accent);
-            border-radius: 10px;
-        }
-
-        h3 {
-            font-size: clamp(1.4rem, 4vw, 2.2rem);
-            margin-bottom: 1rem;
-        }
-
-        p {
-            color: var(--text-medium);
-            font-size: 1.1rem;
-            margin-bottom: 1.8rem;
-            line-height: 1.6;
-        }
-
-        /* ===== КНОПКИ ===== */
-        .btn {
-            display: inline-flex;
+            font-family: 'Inter', sans-serif;
+            background: #0B2B2B;  /* deep elegant dark teal background for contrast */
+            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            padding: 16px 36px;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            border: 2px solid transparent;
-            transition: 0.25s ease;
-            text-decoration: none;
-            box-shadow: var(--shadow-sm);
-            cursor: pointer;
+            padding: 2rem 1rem;
         }
 
-        .btn i { font-size: 1.2rem; }
-
-        .btn:hover {
-            background-color: var(--primary-light);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            box-shadow: none;
-        }
-
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-accent {
-            background: var(--accent);
-            color: var(--primary);
-            border: none;
-        }
-
-        .btn-accent:hover {
-            background: #c58b5a;
-            color: var(--primary);
-        }
-
-        /* ===== ШАПКА ===== */
-        header {
-            position: sticky;
-            top: 0;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            z-index: 100;
-            padding: 16px 0;
-            border-bottom: 1px solid var(--gray-300);
-        }
-
-        .header-flex {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .logo {
-            flex-shrink: 0;
-        }
-
-        .logo img {
-            height: 56px;
-            width: auto;
-            display: block;
-        }
-
-        /* Десктопная навигация */
-        .nav {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .nav a {
-            color: var(--primary);
-            font-weight: 600;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 40px;
-            transition: 0.2s;
-            font-size: 1rem;
-        }
-
-        .nav a i { margin-right: 8px; color: var(--accent); }
-
-        .nav a:hover {
-            background: var(--gray-100);
-        }
-
-        .header-actions {
-            display: flex;
-            gap: 12px;
-        }
-
-        /* Бургер-меню (скрыто на десктопе) */
-        .burger {
-            display: none;
-            flex-direction: column;
-            width: 32px;
-            height: 24px;
-            justify-content: space-between;
-            cursor: pointer;
-            z-index: 200;
-        }
-
-        .burger span {
-            display: block;
-            height: 3px;
+        /* presentation screen wrapper – mimics a large display / kiosk */
+        .presentation-container {
+            max-width: 1400px;
             width: 100%;
-            background: var(--primary);
-            border-radius: 6px;
-            transition: 0.3s;
+            background: #FEF9F0;   /* warm off-white paper-like background */
+            border-radius: 2rem;
+            box-shadow: 0 25px 45px -12px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,215,150,0.3);
+            overflow: hidden;
+            transition: all 0.2s;
         }
 
-        /* Мобильное меню */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: white;
-            z-index: 150;
-            padding: 120px 40px 40px;
+        /* main slide area */
+        .slides-area {
+            padding: 2.5rem 2rem 2rem 2rem;
+        }
+
+        /* header with logo and company branding */
+        .hero-header {
             display: flex;
-            flex-direction: column;
-            gap: 30px;
-            transform: translateX(100%);
-            transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1);
-            box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #FFE0A3;
         }
 
-        .mobile-menu.active {
-            transform: translateX(0);
-        }
-
-        .mobile-menu a {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
+        .logo-block {
             display: flex;
             align-items: center;
-            gap: 20px;
-            border-bottom: 2px solid var(--gray-300);
-            padding-bottom: 20px;
-        }
-
-        .mobile-menu a i {
-            color: var(--accent);
-            width: 48px;
-            font-size: 2rem;
-        }
-
-        /* ===== ГЛАВНЫЙ ЭКРАН ===== */
-        .hero {
-            padding: 60px 0 80px;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .hero-badge {
-            background: var(--accent-light);
-            color: var(--primary);
-            border-radius: 60px;
-            padding: 8px 24px;
-            display: inline-block;
-            font-weight: 600;
-            margin-bottom: 24px;
-            font-size: 1rem;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 40px;
-            margin: 40px 0;
+            gap: 1rem;
             flex-wrap: wrap;
         }
 
-        .stat-item {
-            font-weight: 600;
+        .logo-img {
+            height: 70px;
+            width: auto;
+            max-width: 200px;
+            object-fit: contain;
+            background: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
-        .stat-number {
-            font-size: 2.2rem;
+        .company-name {
+            font-size: 1.9rem;
             font-weight: 800;
-            color: var(--primary);
-            display: block;
+            background: linear-gradient(135deg, #C67B2E, #9B4B1A);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
         }
 
-        .hero-image {
-            background: var(--accent-light);
-            height: 550px;
-            border-radius: 60px 60px 60px 20px;
-            background-image: url('https://images.unsplash.com/photo-1581578731117-10d52143b0d8?w=800&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            box-shadow: 50px 50px 0 var(--accent);
-            transform: rotate(2deg);
+        .tagline {
+            font-size: 0.9rem;
+            color: #5C3E1F;
+            font-weight: 500;
+            margin-top: 0.2rem;
         }
 
-        /* ===== ПРЕИМУЩЕСТВА ===== */
-        .features {
-            padding: 60px 0;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .feature-card {
-            background: var(--surface);
-            border-radius: var(--radius-md);
-            padding: 40px 30px;
-            box-shadow: var(--shadow-sm);
-            transition: 0.25s;
-            border: 1px solid var(--gray-300);
-        }
-
-        .feature-card:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-8px);
-        }
-
-        .feature-icon {
-            background: var(--accent-light);
-            width: 80px;
-            height: 80px;
-            border-radius: 30px;
+        .qr-header {
             display: flex;
+            gap: 1.2rem;
+            background: #FFF6EA;
+            padding: 0.6rem 1.2rem;
+            border-radius: 60px;
             align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 30px;
         }
 
-        .feature-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--accent);
-            display: block;
-            margin-bottom: 10px;
+        .qr-item {
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #7B4A2A;
         }
 
-        /* ===== ПРАЙС-ЛИСТ ===== */
-        .pricing {
-            padding: 60px 0;
+        .qr-code-img {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+            background: white;
+            border-radius: 12px;
+            padding: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
         }
 
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            margin-top: 40px;
-        }
-
-        .price-card {
-            background: var(--surface);
-            border-radius: var(--radius-md);
-            padding: 35px 25px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--gray-300);
-            transition: 0.2s;
-        }
-
-        .price-card.popular {
-            background: var(--accent-light);
-            border: 2px solid var(--accent);
+        .qr-code-img:hover {
             transform: scale(1.02);
         }
 
-        .price-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-md);
+        /* main title */
+        .event-title {
+            text-align: center;
+            margin: 2rem 0 1.5rem;
         }
 
-        .price-title {
-            font-size: 1.6rem;
+        .event-badge {
+            background: #E8D9C4;
+            display: inline-block;
+            padding: 0.3rem 1.8rem;
+            border-radius: 40px;
             font-weight: 700;
-            margin-bottom: 15px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            color: #5C3E1F;
+            margin-bottom: 1rem;
         }
 
-        .price-title i { color: var(--accent); margin-right: 8px; }
-
-        .price-amount {
+        h1 {
             font-size: 2.8rem;
             font-weight: 800;
-            margin: 20px 0;
+            color: #2C2B26;
+            line-height: 1.2;
         }
 
-        .price-amount small {
-            font-size: 1rem;
-            font-weight: 400;
-            color: var(--gray-600);
+        h1 span {
+            background: linear-gradient(120deg, #C6792C, #E5A23C);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
         }
 
-        .price-features {
-            list-style: none;
-            margin: 30px 0;
+        .sub {
+            font-size: 1.1rem;
+            color: #5F4C38;
+            margin-top: 0.5rem;
         }
 
-        .price-features li {
-            padding: 8px 0;
-            border-bottom: 1px dashed var(--gray-300);
+        /* services grid */
+        .services-grid {
             display: flex;
-            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0 2rem;
+            background: #FFFBF5;
+            padding: 1.5rem;
+            border-radius: 2rem;
         }
 
-        .price-features i { color: var(--accent); width: 20px; }
-
-        /* ===== БЛОК ДЛЯ ЗАСТРОЙЩИКОВ ===== */
-        .b2b {
-            background: var(--primary);
-            border-radius: var(--radius-lg) var(--radius-lg) var(--radius-lg) 20px;
-            padding: 80px 60px;
-            margin: 60px 0;
-            color: white;
-        }
-
-        .b2b h2 { color: white; }
-        .b2b h2::after { background: var(--accent); }
-
-        .b2b-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .b2b-list {
-            list-style: none;
-        }
-
-        .b2b-list li {
-            font-size: 1.2rem;
-            margin-bottom: 25px;
-            display: flex;
-            gap: 15px;
-            font-weight: 500;
-        }
-
-        .b2b-list i { color: var(--accent); width: 32px; font-size: 1.6rem; }
-
-        .calculator-card {
+        .service-chip {
             background: white;
-            border-radius: 50px;
-            padding: 40px;
-            color: var(--primary);
+            border-radius: 60px;
+            padding: 0.6rem 1.4rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            border: 1px solid #FFE2B5;
+            color: #3E2A1A;
+            transition: all 0.2s;
         }
 
-        /* ===== ОЗОНИРОВАНИЕ ===== */
-        .ozone {
-            background: var(--accent-light);
-            border-radius: var(--radius-lg) 20px var(--radius-lg) 20px;
-            padding: 70px 50px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            margin: 60px 0;
-        }
-
-        .ozone-image {
-            background: url('https://images.unsplash.com/photo-1584622050111-993a426fbf0a?w=800&auto=format&fit=crop') center/cover;
-            border-radius: 50px;
-            height: 350px;
-        }
-
-        /* ===== БОНУС ===== */
-        .bonus {
-            background: linear-gradient(145deg, #1A2B3F 0%, #2C3E58 100%);
-            border-radius: 100px 20px 100px 20px;
-            padding: 80px 60px;
-            text-align: center;
-            color: white;
-            margin: 60px 0;
-        }
-
-        .bonus-highlight {
-            font-size: clamp(2.5rem, 8vw, 5rem);
+        .service-chip:before {
+            content: "✦ ";
+            color: #D9892E;
             font-weight: 800;
-            background: var(--accent);
-            color: var(--primary);
-            display: inline-block;
-            padding: 15px 70px;
-            border-radius: 100px;
-            margin: 30px 0 20px;
         }
 
-        /* ===== ФУТЕР ===== */
-        footer {
-            background: var(--primary);
-            color: #d0d9e5;
-            padding: 70px 0 30px;
-            border-radius: 60px 60px 0 0;
-            margin-top: 80px;
+        /* certificates showcase — main visual */
+        .certificates-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            justify-content: center;
+            margin: 2.5rem 0 2rem;
         }
 
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1.5fr;
-            gap: 50px;
-            margin-bottom: 50px;
-        }
-
-        .footer-grid a { color: white; text-decoration: none; }
-        .footer-grid h3 { color: white; margin-bottom: 20px; }
-        .footer-grid i { color: var(--accent); width: 28px; margin-right: 8px; }
-
-        .address-box {
-            background: #2C3E58;
-            padding: 25px;
-            border-radius: 40px;
-            margin-top: 20px;
-        }
-
-        .copyright {
+        .cert-card {
+            background: linear-gradient(145deg, #FFFFFF, #FFF9F0);
+            border-radius: 32px;
+            width: 260px;
+            padding: 1.2rem 0.8rem 1rem;
             text-align: center;
-            border-top: 1px solid #3a506e;
-            padding-top: 30px;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.15);
+            transition: transform 0.25s ease;
+            border: 1px solid #FCE5C1;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .cert-place {
+            background: #F3E1CA;
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            color: #875A2C;
+            margin-bottom: 0.8rem;
+        }
+
+        .cert-nom {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #C56C2A;
+            margin: 0.5rem 0;
+        }
+
+        .cert-rub {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .cert-title {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            border-top: 1px dashed #FFD9A3;
+            padding-top: 0.7rem;
+            color: #4E3822;
+        }
+
+        .special-organizer {
+            background: linear-gradient(135deg, #FFF2E2, #FFEAD6);
+            border: 2px solid #E5B46B;
+        }
+
+        /* contact + qr row */
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            background: #2E241E;
+            border-radius: 28px;
+            margin-top: 2rem;
+            padding: 1.2rem 2rem;
+            color: #FCF3E6;
+        }
+
+        .phone-info {
+            display: flex;
+            gap: 1rem;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+
+        .phone-number {
+            font-size: 1.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            background: #F9E0BD;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            color: #2C1A0C;
+        }
+
+        .website {
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: underline;
+            color: #FFD89C;
+        }
+
+        .valid-date {
+            font-weight: 600;
+            background: #3C2D22;
+            padding: 0.4rem 1rem;
+            border-radius: 60px;
             font-size: 0.9rem;
         }
 
-        /* ===== АДАПТАЦИЯ ===== */
-        @media (max-width: 1200px) {
-            .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+        .footer-qr {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
         }
 
-        @media (max-width: 992px) {
-            .nav, .header-actions .btn { display: none; }
-            .burger { display: flex; }
-
-            .hero-grid { grid-template-columns: 1fr; }
-            .hero-image { height: 400px; box-shadow: 30px 30px 0 var(--accent); }
-
-            .features-grid { grid-template-columns: repeat(2, 1fr); }
-
-            .b2b-grid, .ozone { grid-template-columns: 1fr; }
-
-            .footer-grid { grid-template-columns: 1fr 1fr; }
+        .footer-qr-item {
+            text-align: center;
+            font-size: 0.7rem;
         }
 
-        @media (max-width: 768px) {
-            .features-grid { grid-template-columns: 1fr; }
-            .pricing-grid { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; }
-
-            .hero-stats { flex-direction: column; gap: 15px; }
-            .hero-image { height: 280px; }
-
-            .b2b, .ozone, .bonus { padding: 40px 25px; }
-            .calculator-card { padding: 25px; }
-
-            .price-card.popular { transform: scale(1); }
+        .footer-qr-img {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 14px;
+            padding: 4px;
         }
 
-        @media (max-width: 480px) {
-            .logo img { height: 48px; }
-            .btn { padding: 14px 24px; white-space: normal; width: 100%; }
-            .mobile-menu a { font-size: 1.6rem; }
-            .mobile-menu a i { width: 36px; }
+        hr {
+            margin: 1rem 0;
+            border-color: #F0DDC0;
         }
 
-        .w-100 { width: 100%; }
-        .mt-2 { margin-top: 20px; }
-        .flex { display: flex; gap: 15px; flex-wrap: wrap; }
+        /* responsive */
+        @media (max-width: 800px) {
+            .slides-area {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .phone-number {
+                font-size: 1.2rem;
+            }
+            .contact-row {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+            .cert-card {
+                width: 220px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .qr-header {
+                align-self: flex-start;
+            }
+        }
+
+        .button-glow {
+            font-weight: 600;
+        }
+
+        .marafet-sign {
+            text-align: right;
+            margin-top: 1rem;
+            font-style: italic;
+            font-size: 0.8rem;
+            color: #B69272;
+        }
     </style>
 </head>
 <body>
-
-<header>
-    <div class="container header-flex">
-        <div class="logo">
-            <img src="images/logo_cvet.png" alt="МАРАФЕТ">
-        </div>
-
-        <!-- Десктопное меню -->
-        <div class="nav">
-            <a href="#prices"><i class="fas fa-tag"></i>Цены</a>
-            <a href="#developers"><i class="fas fa-building"></i>Застройщикам</a>
-            <a href="#contacts"><i class="fas fa-address-card"></i>Контакты</a>
-        </div>
-
-        <!-- Кнопки в шапке -->
-        <div class="header-actions">
-            <a href="tel:+79635217532" class="btn btn-outline"><i class="fas fa-phone-alt"></i> Позвонить</a>
-            <a href="https://wa.me/79635217532" class="btn btn-accent"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-        </div>
-
-        <!-- Бургер -->
-        <div class="burger" id="burger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
-
-    <!-- Мобильное меню -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#prices"><i class="fas fa-tag"></i> Цены</a>
-        <a href="#developers"><i class="fas fa-building"></i> Застройщикам</a>
-        <a href="#contacts"><i class="fas fa-address-card"></i> Контакты</a>
-        <a href="tel:+79635217532"><i class="fas fa-phone-alt"></i> Позвонить</a>
-        <a href="https://wa.me/79635217532"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-    </div>
-</header>
-
-<script>
-    const burger = document.getElementById('burger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    if (burger && mobileMenu) {
-        burger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            mobileMenu.classList.toggle('active');
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-        });
-
-        // Закрытие при клике вне
-        document.addEventListener('click', (e) => {
-            if (mobileMenu.classList.contains('active') && !mobileMenu.contains(e.target) && !burger.contains(e.target)) {
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-
-        // Закрытие по ссылке
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
-    }
-</script>
-
-<!-- ГЛАВНЫЙ ЭКРАН -->
-<section class="hero">
-    <div class="container hero-grid">
-        <div>
-            <div class="hero-badge"><i class="fas fa-gem"></i> Специальное предложение для застройщиков</div>
-            <h1>Идеальная чистота для ваших объектов</h1>
-            <p>Профессиональная уборка после строительства, предчистовая подготовка и сертификаты для покупателей. Повышайте лояльность и ускоряйте продажи.</p>
-            <div class="hero-stats">
-                <div class="stat-item"><span class="stat-number">2 300+</span> сданных квартир</div>
-                <div class="stat-item"><span class="stat-number">−3 дня</span> на приёмке</div>
-                <div class="stat-item"><span class="stat-number">100%</span> довольных клиентов</div>
-            </div>
-            <div class="flex">
-                <a href="#developers" class="btn"><i class="fas fa-calculator"></i> Рассчитать выгоду</a>
-                <a href="#contacts" class="btn btn-outline"><i class="fab fa-whatsapp"></i> Написать</a>
-            </div>
-        </div>
-        <div class="hero-image"></div>
-    </div>
-</section>
-
-<!-- ПРЕИМУЩЕСТВА -->
-<section class="features">
-    <div class="container">
-        <h2>Почему выбирают нас</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
-                <span class="feature-number">8 лет</span>
-                <h3>Опыт работы</h3>
-                <p>С 2020 года мы профессионально занимаемся клинингом.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-leaf"></i></div>
-                <span class="feature-number">100%</span>
-                <h3>Экологичные средства</h3>
-                <p>Используем только сертифицированную гипоаллергенную химию.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon"><i class="fas fa-file-signature"></i></div>
-                <span class="feature-number">Работаем</span>
-                <h3>С юридическими лицами</h3>
-                <p>Заключаем договоры, предоставляем закрывающие документы.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- БЛОК ДЛЯ ЗАСТРОЙЩИКОВ -->
-<section id="developers" class="b2b">
-    <div class="b2b-grid">
-        <div>
-            <h2>Для застройщиков</h2>
-            <ul class="b2b-list">
-                <li><i class="fas fa-hard-hat"></i> <strong>Послестроительная уборка</strong> — удаление цемента, герметика, строительной пыли.</li>
-                <li><i class="fas fa-paint-roller"></i> <strong>Предчистовая подготовка</strong> — идеальные поверхности перед отделкой.</li>
-                <li><i class="fas fa-key"></i> <strong>Уборка перед сдачей</strong> — квартиры, готовые к заселению.</li>
-                <li><i class="fas fa-gift"></i> <strong>Подарочные сертификаты</strong> — для ваших покупателей (скидка 15%).</li>
-            </ul>
-        </div>
-        <div class="calculator-card">
-            <h3 style="color: var(--primary);">Калькулятор экономии</h3>
-            <p style="font-size: 1.2rem;"><i class="fas fa-check-circle" style="color: var(--accent);"></i> Жилой комплекс на 150 квартир</p>
-            <p style="font-size: 1.2rem;"><i class="fas fa-check-circle" style="color: var(--accent);"></i> Средняя стоимость уборки: 4 500 ₽</p>
-            <p style="font-size: 1.2rem;"><i class="fas fa-check-circle" style="color: var(--accent);"></i> Свой клининг дороже в 2,2 раза</p>
-            <p style="font-size: 2.5rem; font-weight: 800; margin-top: 30px; color: var(--primary);">до 250 000 ₽</p>
-            <p>экономии на каждом корпусе</p>
-        </div>
-    </div>
-</section>
-
-<!-- ЦЕНЫ -->
-<section id="prices" class="pricing">
-    <div class="container">
-        <h2>Цены для юридических лиц</h2>
-        <p>Стоимость указана с учётом НДС. Возможны индивидуальные условия.</p>
-        <div class="pricing-grid">
-            <div class="price-card">
-                <div class="price-title"><i class="fas fa-broom"></i> Поддерживающая</div>
-                <div class="price-amount">90 ₽<small>/м²</small></div>
-                <ul class="price-features">
-                    <li><i class="fas fa-check"></i> Обеспыливание поверхностей</li>
-                    <li><i class="fas fa-check"></i> Мойка сантехники, зеркал</li>
-                    <li><i class="fas fa-check"></i> Влажная уборка полов</li>
-                </ul>
-                <a href="#contacts" class="btn btn-outline w-100">Заказать</a>
-            </div>
-            <div class="price-card popular">
-                <div class="price-title"><i class="fas fa-crown"></i> Послестроительная</div>
-                <div class="price-amount">140 ₽<small>/м²</small></div>
-                <ul class="price-features">
-                    <li><i class="fas fa-check"></i> Удаление цемента, затирки</li>
-                    <li><i class="fas fa-check"></i> Мойка окон, подоконников</li>
-                    <li><i class="fas fa-check"></i> Чистка кафеля, сантехники</li>
-                    <li><i class="fas fa-check"></i> Финальная полировка</li>
-                </ul>
-                <a href="#contacts" class="btn btn-accent w-100">Выбрать</a>
-            </div>
-            <div class="price-card">
-                <div class="price-title"><i class="fas fa-sparkles"></i> Генеральная</div>
-                <div class="price-amount">120 ₽<small>/м²</small></div>
-                <ul class="price-features">
-                    <li><i class="fas fa-check"></i> Чистка люстр, светильников</li>
-                    <li><i class="fas fa-check"></i> Мытьё дверей, плинтусов</li>
-                    <li><i class="fas fa-check"></i> Обезжиривание кухни</li>
-                </ul>
-                <a href="#contacts" class="btn btn-outline w-100">Заказать</a>
-            </div>
-            <div class="price-card">
-                <div class="price-title"><i class="fas fa-soap"></i> Химчистка</div>
-                <div class="price-amount">150 ₽<small>/м²</small></div>
-                <ul class="price-features">
-                    <li><i class="fas fa-check"></i> Мягкая мебель, матрасы</li>
-                    <li><i class="fas fa-check"></i> Ковры, паласы</li>
-                    <li><i class="fas fa-check"></i> Удаление пятен, запахов</li>
-                </ul>
-                <a href="#contacts" class="btn btn-outline w-100">Заказать</a>
-            </div>
-        </div>
-        <p class="text-center" style="margin-top: 40px;"><i class="fas fa-info-circle"></i> Минимальная стоимость заказа — 5 000 ₽. Инвентарь и моющие средства включены.</p>
-    </div>
-</section>
-
-<!-- ОЗОНИРОВАНИЕ -->
-<section class="ozone">
-    <div>
-        <span class="hero-badge" style="background: var(--primary); color: white;"><i class="fas fa-wind"></i> Экологичная технология</span>
-        <h2 style="color: var(--primary);">Озонирование помещений</h2>
-        <p>Устраняет запахи краски, клея, герметиков на молекулярном уровне. Убивает бактерии, вирусы и плесень. Безопасно для людей.</p>
-        <ul class="b2b-list" style="color: var(--primary);">
-            <li><i class="fas fa-shield-alt"></i> Полная дезинфекция</li>
-            <li><i class="fas fa-clock"></i> Помещение готово через 2 часа</li>
-        </ul>
-        <a href="#contacts" class="btn btn-outline" style="margin-top: 20px;"><i class="fas fa-cloud-sun"></i> Добавить в проект</a>
-    </div>
-    <div class="ozone-image"></div>
-</section>
-
-<!-- БОНУС -->
-<section class="bonus">
-    <h2><i class="fas fa-gift"></i> Подарок для ваших клиентов</h2>
-    <div class="bonus-highlight">-15%</div>
-    <p style="font-size: 1.6rem;">на любые услуги клининга</p>
-    <p style="max-width: 700px; margin: 0 auto 30px;">Каждый покупатель квартиры получит сертификат на скидку. Это повышает лояльность и помогает продавать быстрее.</p>
-    <a href="#contacts" class="btn btn-accent" style="font-size: 1.2rem;"><i class="fas fa-certificate"></i> Получить макеты</a>
-</section>
-
-<!-- КОНТАКТЫ -->
-<footer id="contacts">
-    <div class="container">
-        <div class="footer-grid">
-            <div>
-                <h3><i class="fas fa-broom"></i> МАРАФЕТ</h3>
-                <p>Клининговая компания для застройщиков и бизнеса. Барнаул, Алтайский край.</p>
-                <div class="address-box">
-                    <i class="fas fa-map-marker-alt"></i> ул. Никитина, 146-1<br>
-                    <i class="fas fa-clock"></i> Пн–Вс: 08:00 – 22:00
+<div class="presentation-container">
+    <div class="slides-area">
+        <!-- HEADER with logo + QR (messenger & site) -->
+        <div class="hero-header">
+            <div class="logo-block">
+                <img class="logo-img" src="https://github.com/diz-max/marafet/blob/bf349440b083f1cb4bf3217e13a7b705dcf23996/images/logo_new.png?raw=true" 
+                     alt="Марафет логотип" 
+                     onerror="this.onerror=null; this.src='https://via.placeholder.com/200x70?text=MARAFET';">
+                <div>
+                    <div class="company-name">МАРАФЕТ</div>
+                    <div class="tagline">чистота с безупречным стилем</div>
                 </div>
             </div>
-            <div>
-                <h3><i class="fas fa-user-tie"></i> Персональный менеджер</h3>
-                <p><i class="fas fa-phone-alt"></i> <a href="tel:+79635217532">+7 (963) 521-75-32</a><br>
-                <i class="fab fa-whatsapp"></i> <a href="https://wa.me/79635217532">WhatsApp (круглосуточно)</a><br>
-                <i class="fas fa-envelope"></i> <a href="mailto:b2b@marafet22.ru">b2b@marafet22.ru</a></p>
-            </div>
-            <div>
-                <h3><i class="fas fa-file-pdf"></i> Получить предложение</h3>
-                <p>Оставьте заявку — мы подготовим расчёт под ваш объект.</p>
-                <a href="https://wa.me/79635217532" class="btn btn-accent w-100"><i class="fab fa-whatsapp"></i> Написать в WhatsApp</a>
-                <a href="tel:+79635217532" class="btn btn-outline w-100 mt-2"><i class="fas fa-phone-alt"></i> Позвонить</a>
+            <div class="qr-header">
+                <div class="qr-item">
+                    <img class="qr-code-img" src="https://github.com/diz-max/marafet/blob/bf349440b083f1cb4bf3217e13a7b705dcf23996/images/qr_max.png?raw=true" 
+                         alt="QR мессенджер MAX"
+                         onerror="this.src='https://placehold.co/55x55?text=MAX'">
+                    <div>мессенджер MAX</div>
+                </div>
+                <div class="qr-item">
+                    <img class="qr-code-img" src="https://github.com/diz-max/marafet/blob/bf349440b083f1cb4bf3217e13a7b705dcf23996/images/qr.png?raw=true" 
+                         alt="QR сайт"
+                         onerror="this.src='https://placehold.co/55x55?text=SITE'">
+                    <div>Наш сайт</div>
+                </div>
             </div>
         </div>
-        <div class="copyright">
-            <i class="far fa-copyright"></i> 2020–2026 МАРАФЕТ. Все права защищены.
+
+        <!-- Event presentation info -->
+        <div class="event-title">
+            <div class="event-badge">✨ партнер конкурса красоты и грации ✨</div>
+            <h1>«МИССИС <span>БАРНАУЛА 2026</span>»</h1>
+            <div class="sub">Подарочные сертификаты на клининговые услуги для победительниц и организатора</div>
+        </div>
+
+        <!-- SERVICES section (premium cleaning list) -->
+        <div class="services-grid">
+            <div class="service-chip">ГЕНЕРАЛЬНАЯ УБОРКА КВАРТИР/ДОМОВ</div>
+            <div class="service-chip">ПОСЛЕСТРОИТЕЛЬНАЯ УБОРКА</div>
+            <div class="service-chip">ПОДДЕРЖИВАЮЩАЯ УБОРКА</div>
+            <div class="service-chip">УБОРКА ПРОИЗВОДСТВЕННЫХ ПОМЕЩЕНИЙ</div>
+            <div class="service-chip">МОЙКА ОКОН, ВИТРАЖЕЙ, ФАСАДОВ, ВЫВЕСОК</div>
+        </div>
+
+        <!-- CERTIFICATES CARDS (exactly from PDF: 1st, 2nd, 3rd, 1000р participant, and organizer 5000р) -->
+        <div class="certificates-showcase">
+            <!-- 1 место - 5000р -->
+            <div class="cert-card">
+                <div class="cert-place">🥇 1 МЕСТО</div>
+                <div class="cert-nom">5 000 ₽</div>
+                <div class="cert-title">УЧАСТНИЦЕ КОНКУРСА<br>«МИССИС БАРНАУЛА 2026»</div>
+                <div style="font-size: 0.7rem; margin-top: 10px; color:#B87C48;">сертификат на клининг</div>
+                <div style="font-size: 0.7rem; font-weight: 500; margin-top: 8px;">⭐ генеральная уборка ⭐</div>
+            </div>
+            <!-- 2 место - 3000р -->
+            <div class="cert-card">
+                <div class="cert-place">🥈 2 МЕСТО</div>
+                <div class="cert-nom">3 000 ₽</div>
+                <div class="cert-title">УЧАСТНИЦЕ КОНКУРСА<br>«МИССИС БАРНАУЛА 2026»</div>
+                <div style="font-size: 0.7rem; margin-top: 10px; color:#B87C48;">идеальный порядок в подарок</div>
+            </div>
+            <!-- 3 место - 2000р -->
+            <div class="cert-card">
+                <div class="cert-place">🥉 3 МЕСТО</div>
+                <div class="cert-nom">2 000 ₽</div>
+                <div class="cert-title">УЧАСТНИЦЕ КОНКУРСА<br>«МИССИС БАРНАУЛА 2026»</div>
+                <div style="font-size: 0.7rem; margin-top: 8px;">✨ поддерживающая уборка ✨</div>
+            </div>
+            <!-- Участнице номинал 1000р (4 страница) -->
+            <div class="cert-card">
+                <div class="cert-place">🎀 СПЕЦИАЛЬНЫЙ</div>
+                <div class="cert-nom">1 000 ₽</div>
+                <div class="cert-title">УЧАСТНИЦЕ КОНКУРСА КРАСОТЫ И ГРАЦИИ<br>«МИССИС БАРНАУЛА 2026»</div>
+                <div style="font-size: 0.7rem; margin-top: 6px;">подарочный сертификат</div>
+            </div>
+            <!-- ОРГАНИЗАТОРУ номинал 5000р (особый) -->
+            <div class="cert-card special-organizer">
+                <div class="cert-place">🏆 ОРГАНИЗАТОРУ</div>
+                <div class="cert-nom">5 000 ₽</div>
+                <div class="cert-title">ОРГАНИЗАТОРУ КОНКУРСА КРАСОТЫ И ГРАЦИИ<br>«МИССИС БАРНАУЛА 2026»</div>
+                <div style="font-size: 0.7rem; font-weight: 600; margin-top: 8px;">премиум-клининг в подарок</div>
+            </div>
+        </div>
+
+        <!-- Additional info from PDF: contact, validity, plus QR integrated again -->
+        <div class="contact-row">
+            <div class="phone-info">
+                <div class="phone-number">+7(963) 521 75 32</div>
+                <a href="https://marafet22.ru/" target="_blank" class="website">marafet22.ru</a>
+            </div>
+            <div class="valid-date">
+                🗓️ Срок действия сертификатов: до <strong>31.05.2026</strong>
+            </div>
+            <div class="footer-qr">
+                <div class="footer-qr-item">
+                    <img class="footer-qr-img" src="https://github.com/diz-max/marafet/blob/bf349440b083f1cb4bf3217e13a7b705dcf23996/images/qr_max.png?raw=true" 
+                         alt="QR MAX" onerror="this.src='https://placehold.co/50x50'">
+                    <div>MAX</div>
+                </div>
+                <div class="footer-qr-item">
+                    <img class="footer-qr-img" src="https://github.com/diz-max/marafet/blob/bf349440b083f1cb4bf3217e13a7b705dcf23996/images/qr.png?raw=true" 
+                         alt="QR сайт" onerror="this.src='https://placehold.co/50x50'">
+                    <div>Сайт</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Full service description + additional style -->
+        <hr>
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.8rem; align-items: center; margin-top: 0.5rem;">
+            <div style="font-size: 0.85rem; color:#8E6A44;">
+                🌟 Профессиональный клининг в Барнауле — качество, проверенное временем. 
+                Все виды уборки: от генеральной до мытья фасадов и витрин.
+            </div>
+            <div class="marafet-sign">
+                Вольга Кравцова | Марафет
+            </div>
+        </div>
+        <div style="background:#FEF3E6; margin-top: 1.2rem; border-radius: 24px; padding: 0.8rem 1.2rem; text-align: center; font-size: 0.8rem;">
+            ⚡ Подарочный сертификат можно использовать на любой вид услуг: генеральная, послестроительная, поддерживающая уборка, 
+            мойка окон, витражей и фасадов. Действителен до 31 мая 2026.
         </div>
     </div>
-</footer>
-
+    <!-- subtle footnote: presentation screen optimized -->
+</div>
+<div style="text-align: center; margin-top: 1.5rem; color: #CDB28C; font-size: 0.8rem;">
+    🧼 Марафет — безупречная чистота для вашего дома и бизнеса 🧼
+</div>
 </body>
 </html>
